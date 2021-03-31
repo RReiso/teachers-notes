@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .navbar-brand{
   padding:0.375rem 1rem;
+  text-decoration: none;
+  
 }
-.brand-name{
-  padding:0 1rem;
+.link{
   text-decoration: none;
 }
+
 .navbar-collapse{
   // flex-grow: 0;
   margin-left:0rem;
