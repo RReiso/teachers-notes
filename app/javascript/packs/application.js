@@ -14,7 +14,7 @@ ActiveStorage.start()
 
 
 
-//for bootstrap to work:
+//for Bootstrap 5 to work:
 
 import * as bootstrap from "bootstrap";
 import "../stylesheets/application";

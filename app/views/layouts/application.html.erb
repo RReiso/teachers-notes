@@ -13,9 +13,11 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
+  <div class="logo">
     <%=link_to root_path, class: "link" do %>
     <%=image_tag("logo.png", class: "menu_icon", size: "50x80", alt: "Logo")%>
     <span class="navbar-brand">Teacher's pocket</span>
+    </div>
   <%end%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,10 +36,10 @@
           <%=link_to "Activities", activities_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <%=link_to "Log in", "/login", class: "nav-link"%>
+          <%=link_to "Log in", :log_in, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <%=link_to "Sign up", "/signup", class: "nav-link"%>
+          <%=link_to "Sign up", :sign_up, class: "nav-link"%>
         </li>
           <%else%>
         <li class="nav-item dropdown">
@@ -50,6 +52,9 @@
             <li><%=link_to "Liked", :liked, class: "dropdown-item"%></li>
             <li><%=link_to "New", new_activity_path, class: "dropdown-item"%></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <%=link_to "Log out", root_path, class: "nav-link"%>
         </li>
           <%end%>
       </ul>
