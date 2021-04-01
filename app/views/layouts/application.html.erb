@@ -15,23 +15,25 @@
   <div class="container-fluid">
   <div class="logo">
     <%=link_to root_path, class: "link" do %>
-    <%=image_tag("logo.png", class: "menu_icon", size: "50x80", alt: "Logo")%>
-    <span class="navbar-brand">Teacher's pocket</span>
+    <%=image_tag("logo.png", class: "menu-icon", size: "50x80", alt: "Logo")%>
+    <span class="navbar-brand" id="brand-text">Teacher's pocket</span>
     </div>
   <%end%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    <%= form_tag(:search_path, :method => "get", class: "d-flex") do %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control me-2", "aria-label": "Search" %> 
+<%= button_tag "Search", :class => 'btn btn-outline-primary',:name => nil%>
+<% end %>
+
+    
       <ul class="navbar-nav mb-2 mb-lg-0 ">
         <li class="nav-item">
           <%=link_to "Home", root_path, class: "nav-link",  "aria-current" => "page"%>
         </li>
-        <%if 2+2==5%>
+        <%if 2+2==4%>
         <li class="nav-item">
           <%=link_to "Activities", activities_path, class: "nav-link"%>
         </li>
@@ -39,7 +41,8 @@
           <%=link_to "Log in", :log_in, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <%=link_to "Sign up", :sign_up, class: "nav-link"%>
+        <%=link_to "Sign up", :sign_up, class: "btn btn-danger"%>
+          
         </li>
           <%else%>
         <li class="nav-item dropdown">
@@ -62,6 +65,12 @@
     </div>
   </div>
 </nav>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-warning alert-dismissible fade show mx-5 my-3" role="alert">
+    <%= msg %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
     <%= yield %>
   </body>
 </html>
