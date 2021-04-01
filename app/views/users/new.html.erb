@@ -1,6 +1,6 @@
 <% provide(:title, 'Sign up') %>
  <div class="wrapper">
-	<%=form_for @user do |f|%>
+	<%=form_for @user, html: {onsubmit: "return checkForm(this);"} do |f|%>
 	<div class="form-group">
 			<h2>Create account</h2>
 	</div>

@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = "User.new"
+    @user = User.new
     
   end
 
   def create
-    render plain: params
+    # render plain: params
   end
 end
