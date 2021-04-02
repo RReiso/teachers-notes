@@ -1,6 +1,10 @@
 <% provide(:title, 'Sign up') %>
  <div class="wrapper">
 	<%=form_for @user, html: {onsubmit: "return checkForm(this);"} do |f|%>
+  <%# error messages after back end validation: 
+  app/views/shared/_error_messages.html.erb%>
+  <%= render 'shared/error_messages' %>
+
 	<div class="form-group">
 			<h2>Create account</h2>
 	</div>
