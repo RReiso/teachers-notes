@@ -2,7 +2,9 @@
  <div class="wrapper">
 	<%=form_for @user, html: {onsubmit: "return checkForm(this);"} do |f|%>
   <%# error messages after back end validation: 
-  app/views/shared/_error_messages.html.erb%>
+     app/views/shared/_error_messages.html.erb.
+  these are not flash messages! These are provided automatically by Active Record:%>
+  <%# In this app, JS does most of the validation, error msg is rendered if email is taken or invalid %>
   <%= render 'shared/error_messages' %>
 
 	<div class="form-group">
@@ -32,7 +34,7 @@
             
 						<p class="form-group">By creating an account, you agree to our <%=link_to "Terms of Use", "#"%> and our <%=link_to "Privacy Policy", "#"%>.</p>
 						<hr>
-						<p class="form-group note">Already have an account? <%=link_to "Log in", :log_in%></p>
+						<p class="form-group note">Already have an account? <%=link_to "Log in", login_path%></p>
             <%end%>
             
 				

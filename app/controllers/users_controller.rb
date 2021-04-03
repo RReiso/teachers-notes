@@ -9,7 +9,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    render "new"
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome #{@user.name} to the Teacher's Pocket!"
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private
