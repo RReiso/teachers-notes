@@ -14,10 +14,11 @@ before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
   end
 
   def all_activities
-    
+   @all_activities = Activity.all 
+   @p = params
   end
 
-  def liked
+  def category
     render plain: params
   end
 

@@ -1,1 +1,64 @@
-all act
+<%= form_tag(:all_activities, method: "get") do %>
+<div class="d-flex justify-content-around bg-light py-3 px-2 my-2 mx-1 align-items-center flex-wrap">
+<div class="form-check m-1">
+  <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :all, "All", class: "form-check-label"%>
+ </div>
+<div class="form-check m-1">
+  <%= check_box_tag 'popular', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :popular, "Popular", class: "form-check-label"%>
+</div>
+<div class="form-check m-1">
+  <%= check_box_tag 'games', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :games, "Games", class: "form-check-label"%>
+</div>
+<div class="form-check m-1">
+  <%= check_box_tag 'ice_breakers', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :ice_breakers, "Ice breakers", class: "form-check-label"%>
+</div>
+<div class="form-check m-1">
+  <%= check_box_tag 'vocabulary', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :vocabulary, "Vocabulary", class: "form-check-label"%>
+</div>
+<div class="form-check m-1">
+  <%= check_box_tag 'music', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :music, "Music", class: "form-check-label"%>
+</div>
+<div class="form-check m-1">
+  <%= check_box_tag 'movement', "yes", false, class: "form-check-input"%>
+  <%= label_tag :movement, "Movement", class: "form-check-label"%>
+</div>
+</div>
+
+
+          
+            <%#  after JS validation alert for non matching passwords, button gets disabled, "data:disbale_with:false" keeps it enabled %>
+              <%=button_tag "Filter", class: "btn btn-primary px-4 right"%>
+					
+        
+
+<%end%>
+
+<div class="form-check">
+ <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
+  <%= label_tag :all, "All", class: "form-check-label"%>
+  
+  <label class="form-check-label" for="t">
+    Default checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Checked checkbox
+  </label>
+</div>
+
+
+<p><%=@p%></p>
+
+<%@all_activities.each  do |e|%>
+<p><%=e.title%></p>
+<p><%=e.description%></p>
+<p><%=e.category%></p>
+<%end%>

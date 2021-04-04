@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :activities
+
   #https://3rd-edition.railstutorial.org/book/modeling_users#code-validates_uniqueness_of_email_case_insensitive
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
