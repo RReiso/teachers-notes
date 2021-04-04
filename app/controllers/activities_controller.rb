@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
-before_action :logged_in_user, only: [:new, :edit] #(in sessions_helper)
+before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
+
 
   def index #users/nr/activities
     render plain: params
@@ -9,11 +10,16 @@ before_action :logged_in_user, only: [:new, :edit] #(in sessions_helper)
     render plain: params 
   end
 
+  def edit
+  end
+
   def all_activities
-   render plain: params 
+    
   end
 
   def liked
     render plain: params
   end
+
+  
 end

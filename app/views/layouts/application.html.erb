@@ -46,10 +46,10 @@
         </li>
           <%else%>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Activities
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li><%=link_to "All activities", :all_activities, class: "dropdown-item"%></a></li>
             <li><%=link_to "My activities", user_activities_path(current_user_method), class: "dropdown-item"%></li>
             <li><%=link_to "New", new_user_activity_path(current_user_method), class: "dropdown-item"%></li>

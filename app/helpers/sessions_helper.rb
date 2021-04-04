@@ -26,7 +26,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-  #Inform user if trying to access login/signup url while being logged in
+  #Inform user if trying to access login/signup path while already logged in:
 def logged_in_flash
       if current_user_method
         flash[:info] = "Already logged in!"
@@ -34,11 +34,16 @@ def logged_in_flash
       end
     end
 
-    def logged_in_user
+    def require_current_user
       if !current_user_method
         flash[:warning] = "Please log in!"
       redirect_to login_path
-      end
+      else
+        #if user tries to access "activities/new" or "activities/nr/edit" of another user:
+        if session[:user_id].to_s != params[:user_id]
+          no_access #(in application_controller)
+        end
     end
+  end
   
 end

@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def search
     if params[:search].blank?
       flash[:warning] = "Empty search field!"
-      redirect_to root_path
+      redirect_to :all_activities
       # redirect_to(root_path, alert: "Empty search field!") and return
     else
       @parameter = params[:search].downcase

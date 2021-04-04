@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :no_access, only: [:edit, :index, :show]
-  before_action :logged_in_flash, only: [:new] #(in sessions_helper.rb)
+  before_action :no_access, only: [:edit, :index, :show] #in applications_controller
+  before_action :logged_in_flash, only: [:new] #in sessions_helper.rb
 
   def index
   end
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
+  def new #signup path
     
       @user = User.new
    
@@ -36,8 +36,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    def no_access
-      flash[:danger] = "Forbidden"
-      redirect_to root_path
-    end
+    
+    
 end
