@@ -10,7 +10,7 @@ module SessionsHelper
 #   User.find_by(id: session[:user_id])
 # end
 # This would work fine, but it would hit the database multiple times if, e.g., current_user appeared multiple times on a page. Instead, follow Ruby convention by storing the result of User.find_by in an instance variable, which hits the database the first time but returns the instance variable immediately on subsequent invocations:
-  def current_user
+  def current_user_method
     if @current_user.nil?
       @current_user = User.find_by(id: session[:user_id])
     else

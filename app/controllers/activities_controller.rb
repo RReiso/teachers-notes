@@ -1,5 +1,17 @@
 class ActivitiesController < ApplicationController
-  def index; end
+  def index #users/nr/activities
+    render plain: params
+   end 
 
-  def my_activities; end
+  def new #users/nr/activities/new
+    render plain: params 
+  end
+
+  def all_activities
+   render plain: params 
+  end
+
+  def liked
+    render plain: params
+  end
 end

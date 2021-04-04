@@ -9,8 +9,11 @@ Rails
     get "/login", to: "sessions#new" #login_path
     post "/login", to: "sessions#create" #login_path
     delete "/logout", to: "sessions#destroy" #logout_path
-    get "/activities/liked", to: "activities#liked", as: :liked
-    get "/activities/my_activities", to: "activities#my_activities", as: :my_activities
-    resources :activities
-    resources :users
+    get "/activities", to: "activities#all_activities", as: :all_activities
+    # get "/users/:user_id/activities", to: "activities#index", as: user_activities_path(current_user_method)
+    # get "/users/:user_id/activities/new", to: "activities#new", as: new_user_activity_path(current_user_method)
+    
+    resources :users do
+      resources :activities
+    end
   end

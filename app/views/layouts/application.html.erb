@@ -33,9 +33,9 @@
         <li class="nav-item">
           <%=link_to "Home", root_path, class: "nav-link",  "aria-current" => "page"%>
         </li>
-        <%if !current_user%>
+        <%if !current_user_method%>
         <li class="nav-item">
-          <%=link_to "Activities", activities_path, class: "nav-link"%>
+          <%=link_to "Activities", :all_activities, class: "nav-link"%>
         </li>
         <li class="nav-item">
           <%=link_to "Log in", login_path, class: "nav-link"%>
@@ -50,10 +50,9 @@
             Activities
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%=link_to "All activities", activities_path, class: "dropdown-item"%></a></li>
-            <li><%=link_to "My activities", :my_activities, class: "dropdown-item"%></li>
-            <li><%=link_to "Liked", :liked, class: "dropdown-item"%></li>
-            <li><%=link_to "New", new_activity_path, class: "dropdown-item"%></li>
+            <li><%=link_to "All activities", :all_activities, class: "dropdown-item"%></a></li>
+            <li><%=link_to "My activities", user_activities_path(current_user_method), class: "dropdown-item"%></li>
+            <li><%=link_to "New", new_user_activity_path(current_user_method), class: "dropdown-item"%></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -72,6 +71,9 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
+<%if @current_user%>
+this is <%=@current_user.name%>
+<%end%>
     <%= yield %>
   </body>
 </html>
