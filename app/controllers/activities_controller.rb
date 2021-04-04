@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+before_action :logged_in_user, only: [:new, :edit] #(in sessions_helper)
+
   def index #users/nr/activities
     render plain: params
    end 

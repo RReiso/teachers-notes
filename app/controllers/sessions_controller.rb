@@ -1,11 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_flash, only: [:new] #(in sessions_helper)
   def new
-    if !current_user_method
-      render "new"
-    else
-      flash[:info] = "Already logged in!"
-      redirect_to root_path
-    end
+    
   end
 
   def create

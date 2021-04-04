@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :no_access, only: [:edit, :index, :show]
+  before_action :logged_in_flash, only: [:new] #(in sessions_helper.rb)
 
   def index
   end
@@ -12,14 +13,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    if !current_user_method
+    
       @user = User.new
-      render "new"
-    else
-      flash[:info] = "Already logged in!"
-      redirect_to root_path
-    end
+   
   end
+
+
 
   def create
     @user = User.create(user_params)

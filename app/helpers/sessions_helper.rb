@@ -25,4 +25,20 @@ module SessionsHelper
     session.delete(:user_id) #session.clear?, reset_session?
     @current_user = nil
   end
+
+  #Inform user if trying to access login/signup url while being logged in
+def logged_in_flash
+      if current_user_method
+        flash[:info] = "Already logged in!"
+      redirect_to root_path
+      end
+    end
+
+    def logged_in_user
+      if !current_user_method
+        flash[:warning] = "Please log in!"
+      redirect_to login_path
+      end
+    end
+  
 end
