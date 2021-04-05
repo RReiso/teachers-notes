@@ -2,7 +2,7 @@
 <div class="d-flex justify-content-around bg-light py-3 px-2 my-2 mx-1 align-items-center flex-wrap">
 <div class="form-check m-1">
   <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
-  <%= label_tag :alp, "All", class: "form-check-label"%>
+  <%= label_tag :all, "All", class: "form-check-label"%>
  </div>
 <div class="form-check m-1">
   <%= check_box_tag 'popular', 'yes', false, class: "form-check-input"%>
@@ -31,17 +31,14 @@
 
 </div>
 
-
-        
               <%=button_tag "Filter", class: "btn btn-primary px-4 right"%>
-					
-        
 
 <%end%>
 
 
 
 <p><%=@p%></p>
+<p><%=@a%></p>
 
 
 <%=@activities.each  do |e|%>

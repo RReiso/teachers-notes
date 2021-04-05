@@ -14,12 +14,15 @@ before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
   end
 
   def all_activities
-    #if user checks "all" or first time visits /activities:
-    if params[:all] == "yes" || params[:activity] == nil
-      @activities = Activity.all 
-    else
-      #if user checks other boxes:
-      @activities = [] #store filtered results
+if params[:popular] == "yes" #if user checks "popular"
+  #organize all activities into descending order according to heart_count:
+   @activities = Activity.order(heart_count: :desc)
+
+elsif params[:all] == "yes" #if user checks "all"
+  @activities = Activity.all 
+
+elsif params[:activity] != nil  #if user checks other boxes
+  @activities = [] #store filtered results
       categories= params[:activity][:categories] #array of checked categories
       categories.each do |c|
         activity = Activity.all.where("category like ?", "%#{c}%")
@@ -29,7 +32,11 @@ before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
           @activities = @activities.uniq #delete duplicates
         end
       end
-  end
-@p = params
+
+    else #if user checks no boxes
+        @activities = Activity.all 
+    end          
+
+    
 end
 end
