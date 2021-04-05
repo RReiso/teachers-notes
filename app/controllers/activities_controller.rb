@@ -14,13 +14,22 @@ before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
   end
 
   def all_activities
-   @all_activities = Activity.all 
-   @p = params
+    #if user checks "all" or first time visits /activities:
+    if params[:all] == "yes" || params[:activity] == nil
+      @activities = Activity.all 
+    else
+      #if user checks other boxes:
+      @activities = [] #store filtered results
+      categories= params[:activity][:categories] #array of checked categories
+      categories.each do |c|
+        activity = Activity.all.where("category like ?", "%#{c}%")
+        if activity != [] #"if activity" doesn't work because "where" returns empty record [].
+          @activities << activity
+          @activities.flatten! #from[1,2,[3,4]] to [1,2,3,4]
+          @activities = @activities.uniq #delete duplicates
+        end
+      end
   end
-
-  def category
-    render plain: params
-  end
-
-  
+@p = params
+end
 end
