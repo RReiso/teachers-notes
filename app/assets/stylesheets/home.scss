@@ -1,14 +1,15 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-body{
-  background-color: rgb(255, 254, 250) !important;
-}
-.menu-icon {
-  transform: rotate(-4deg);
+
+
+
+
+.menu-icon{
+  transform: rotate(-4deg) ;
 }
 .logo {
-  padding: 0.5rem 1.5rem;
+  padding: 0.25rem 1rem;
 }
 .navbar-brand {
   padding-left: 0.375rem;
@@ -45,3 +46,39 @@ body{
 ul{
   margin-bottom:0 !important; 
 }
+
+body{
+  background-color: rgb(255, 253, 246) !important;
+  color: rgb(44, 44, 49)!important;
+}
+#brand-text{
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  font-family:"Balsamiq Sans";
+  color:#053e80;
+  
+};
+
+#brand-text span{
+  color:#a51c0a;
+}
+
+
+ .navigation{
+border-bottom: 1px solid #d0ddbf;
+   background-color: #dfffb4;
+ }
+
+ .nav-link{
+   
+   border-radius:4px;
+   color: rgb(44, 44, 49)!important;
+
+ }
+
+ .nav-link:hover{
+  //  padding:0;
+   background-color:var(--bs-primary);
+   color:oldlace !important;
+
+ }

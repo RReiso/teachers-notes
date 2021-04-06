@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
 before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
+before_action :find_user_by_id, only: [:new, :edit, :create, :destroy, :update] #private
 
 
   def index #users/nr/activities
@@ -7,7 +8,12 @@ before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
    end 
 
   def new #users/nr/activities/new
-    render plain: params 
+    @new_activity = Activity.new
+    
+  end
+  
+  def create
+    render plain: params
   end
 
   def edit
@@ -26,7 +32,7 @@ elsif params[:activity] != nil  #if user checks other boxes
       categories= params[:activity][:categories] #array of checked categories
       categories.each do |c|
         activity = Activity.all.where("category like ?", "%#{c}%")
-        if activity != [] #"if activity" doesn't work because "where" returns empty record [].
+        if activity != [] #"if activity" doesn't work because "where" returns empty record []
           @activities << activity
           @activities.flatten! #from[1,2,[3,4]] to [1,2,3,4]
           @activities = @activities.uniq #delete duplicates
@@ -39,7 +45,10 @@ elsif params[:activity] != nil  #if user checks other boxes
 
     
 end
-
+ private
+ def find_user_by_id
+  @user = User.find(params[:user_id])
+ end
 
 
 end

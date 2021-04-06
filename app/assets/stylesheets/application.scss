@@ -13,31 +13,7 @@
  *= require_tree .
  *= require_self
  */
- .navigation{
-border-bottom: 1px solid rgb(224, 224, 224);
-   background-color: rgb(236, 235, 250);
- }
+ 
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa&family=Patrick+Hand&family=Shadows+Into+Light&display=swap');
+ @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mulish&display=swap");
 
- .nav-link{
-   position: relative;
-   color: rgb(28, 28, 32)!important;
-
- }
-
- .nav-link::after {
-		position: absolute;
-		content: "";
-		width: 80%;
-		height: 2px;
-		top: 90%;
-		left: 10%;
-		background-color: rgb(28, 28, 32);
-		transition: transform 0.3s;
-		transform: scaleX(0);
-		transform-origin: left;
-	}
-
-	.nav-link:hover::after {
-		transform: scaleX(1);
-		transform-origin: left;
-	}

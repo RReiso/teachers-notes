@@ -2,10 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import "application.scss";
+
 h1{
- letter-spacing: 2px;
+ letter-spacing: 3px;
+ font-family: "Architects Daughter";
 }
 
+.sub-text{
+  padding: 1rem;
+}
+
+@media (min-width: 600px){
+  .sub-text{
+
+    padding: 1rem 5rem;
+  }
+}
+
+@media (min-width: 1000px){
+  .sub-text{
+
+    padding: 1rem 12rem;
+  }
+
+}
 .right{
 //  float:right;
 margin: 0 auto;
@@ -20,7 +41,9 @@ display: block !important;
 }
 .categories-div{
   width:fit-content;
-  margin: 0 auto;
+  display: flex ;
+  align-items: center;
+  flex-direction: column;
   padding:1rem;
 }
 .category{
@@ -83,4 +106,21 @@ display: block !important;
 
 .activity-cta{
   font-size: 1.125rem;
+}
+
+.create-wrapper{
+  max-width: 800px;
+  margin: 1.5rem auto 1rem;
+  padding: 1rem;
+}
+
+.create-activity-heading{
+  margin: 0.5rem 1.5rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-activity-heading img{
+  padding-right:0;
 }

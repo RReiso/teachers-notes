@@ -1,10 +1,10 @@
 <header>
 <h1 class="text-center pt-3 pt-sm-5 text-uppercase fs-2 fw-bold">Activities</h1>
-<p class ="lead text-center m-1 py-1 py-sm-2 py-md-3 px-sm-5 mx-sm-5">So many ideas, so many possibilities! Look through our ever-growing collection of short activities and games and find new fun and effective ways how to engage your students!</p>
+<p class ="lead text-center m-1 sub-text">So many ideas, so many possibilities! Look through our ever-growing collection of short activities and games and find new ways how to engage your students!</p>
 </header>
 <section>
 <%= form_tag(:all_activities, method: "get") do %>
-<div class="categories-div bg-light my-3 my-sm-5 card">
+<div class="categories-div container bg-light my-3 my-sm-5 card">
 <div class="d-flex justify-content-center  px-2 py-1  mx-1 my-2 align-items-center flex-wrap fs-5">
 <div class="form-check  mx-2">
   <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
@@ -19,12 +19,16 @@
   <%= label_tag :activity_categories_games, "Games", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
-  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "ice_breakers", nil)%>
+  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
   <%= label_tag :activity_categories_ice_breakers, "Ice breakers", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
   <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
   <%= label_tag :activity_categories_vocabulary, "Vocabulary", class: "form-check-label"%>
+</div>
+<div class="form-check mx-2">
+  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
+  <%= label_tag :activity_categories_brain_teasers, "Brain teasers", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
   <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
@@ -70,7 +74,7 @@
         <%=link_to get_user_name(activity), user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
         <hr>
-        <p class="activity-cta text-center ">Did you try this activity? Leave a comment and share your experience!</p>
+        <p class="activity-cta text-center ">Tried this activity? Leave a comment and share your experience!</p>
         <div class="user-action-buttons">
        <a href="" class="btn btn-primary btn-sm">Comments</a>
        <%if !current_user_method%>
@@ -90,5 +94,6 @@
     </div>
     </div>
     </section>
+    
 
 
