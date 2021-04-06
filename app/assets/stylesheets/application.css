@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+ .navigation{
+border-bottom: 1px solid rgb(224, 224, 224);
+   background-color: rgb(236, 235, 250);
+ }
+
+ .nav-link{
+   position: relative;
+   color: rgb(28, 28, 32)!important;
+
+ }
+
+ .nav-link::after {
+		position: absolute;
+		content: "";
+		width: 80%;
+		height: 2px;
+		top: 90%;
+		left: 10%;
+		background-color: rgb(28, 28, 32);
+		transition: transform 0.3s;
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+
+	.nav-link:hover::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}

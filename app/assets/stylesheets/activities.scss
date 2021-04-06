@@ -2,19 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+h1{
+ letter-spacing: 2px;
+}
+
 .right{
 //  float:right;
 margin: 0 auto;
 display: block !important;
 // margin-left: auto; 
 // margin-right: 1rem;
-margin-bottom: 2rem;
+
 }
 .activity-heading{
   display:flex;
   align-items:center;
 }
-
+.categories-div{
+  width:fit-content;
+  margin: 0 auto;
+  padding:1rem;
+}
 .category{
   // border:1px solid orangered;
   background-color: #6f90af;

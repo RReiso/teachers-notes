@@ -1,7 +1,9 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+body{
+  background-color: rgb(255, 254, 250) !important;
+}
 .menu-icon {
   transform: rotate(-4deg);
 }
