@@ -1,1 +1,61 @@
 
+<div class="create-activity-heading mt-2 mt-ms-4">
+  <%if !current_user_method%>
+			<h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold">Activities</h1>
+       </div>
+      <p class="text-center lead">All activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
+      
+      <%else%>
+			<h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold">My activities</h1>
+      </div>
+<%end%>
+
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+
+    <%@activities.each  do |activity|%>
+    <div class="col-lg-6 mb-4">
+    <div class="card bg-light print">
+      <div class="card-body">
+      <div class="activity-heading">
+      <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
+        <h5 class="card-title"><%=activity.title%></h5>
+        </div>
+        <hr>
+        <p class="categories">
+        <%# splitting the category string by commas %>
+        <%activity.category.split(",").each do |categ|%>
+          <span class="category"><%=categ%></span>
+        <%end%>
+        </p>
+        <p class=" text-justify"><%=activity.description%></p>
+        <p >Posted by:
+         <%# methods in application_controller: %>
+        <%=link_to get_user_name(activity), user_activities_path(get_user(activity)), class: "user-name"%>
+        </p>
+        <%if current_user_method%>
+        <%=link_to "Edit", edit_user_activity_path(@user, activity), class: "btn btn-secondary btn-sm"%>
+        <%=link_to "Delete", user_activity_path(@user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+        <%end%>
+        <hr>
+        <p class="activity-cta text-center ">Tried this activity? Leave a comment and share your experience!</p>
+        <div class="user-action-buttons">
+       <a href="" class="btn btn-primary btn-sm">Comments</a>
+       <%if !current_user_method%>
+        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
+        <%else%>
+        <i class=" heart_icon fas fa-heart fa-2x"  ></i>
+        <%end%>
+        <span ><%=activity.heart_count%></span>
+        <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
+        <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
+        </div>
+      </div>
+     </div>
+    </div>
+    
+     <%end%>
+    </div>
+    </div>
+    </section>

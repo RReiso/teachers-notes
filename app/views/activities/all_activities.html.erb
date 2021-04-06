@@ -69,7 +69,6 @@
         </p>
         <p class=" text-justify"><%=activity.description%></p>
         <p >Posted by:
-         <a href="" class="user-name"></a>
          <%# methods in application_controller: %>
         <%=link_to get_user_name(activity), user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
