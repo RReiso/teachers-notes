@@ -39,4 +39,7 @@ elsif params[:activity] != nil  #if user checks other boxes
 
     
 end
+
+
+
 end

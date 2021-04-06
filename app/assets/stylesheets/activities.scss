@@ -4,8 +4,75 @@
 
 .right{
 //  float:right;
-// margin: 0 0.5rem 1rem;
+margin: 0 auto;
 display: block !important;
-margin-left: auto; 
-margin-right: 1rem;
+// margin-left: auto; 
+// margin-right: 1rem;
+margin-bottom: 2rem;
+}
+.activity-heading{
+  display:flex;
+  align-items:center;
+}
+
+.category{
+  // border:1px solid orangered;
+  background-color: #6f90af;
+  padding:0.125rem 0.25rem;
+  margin-right:0.25rem;
+  border-radius:4px;
+  font-size: 0.875rem;
+  color:mintcream;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
+.user-name{
+  
+  text-decoration: none;
+  // background-color: #638f37;
+  padding:0.125rem 0.25rem;
+  // margin-right:0.25rem;
+  // border-radius:4px;
+  // font-size: 0.875rem;
+  color:#017bfd;
+}
+
+.user-name:hover{
+  color:#183da3;
+}
+.user-action-buttons{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-action-buttons *{
+  margin: 0 0.5rem; 
+}
+
+.heart_icon{
+  margin-right: 0;
+  cursor:pointer;
+  color:  rgb(230, 59, 59);
+}
+
+.heart_icon:hover{
+  color: rgb(204, 38, 38);
+}
+
+.liked{
+  color: rgb(204, 38, 38);
+}
+
+.card-icon{
+  width:5rem;
+  margin:0.5rem;
+  padding-right:1rem;
+}
+
+.activity-cta{
+  font-size: 1.125rem;
 }
