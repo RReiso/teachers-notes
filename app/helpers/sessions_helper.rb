@@ -34,7 +34,7 @@ def logged_in_flash
       end
     end
 
-    def require_current_user
+    def request_login
       if !current_user_method
         flash[:warning] = "Please log in!"
       redirect_to login_path
@@ -46,7 +46,7 @@ def logged_in_flash
      session[:user_id] == activity.user_id
   end
   
-def is_current_user #checks if the current logged in user is accesing what he is authorized to do (new/edit)
+def is_current_user #checks if the current logged in user is accesing his own content
   session[:user_id].to_s == params[:user_id] 
 end
 

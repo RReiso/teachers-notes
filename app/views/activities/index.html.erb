@@ -7,9 +7,9 @@
       
       <%else%>
       
-      <h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold">Activities</h1>
+      <h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold"><span><%=@user.name%>'s </span>activities</h1>
        </div>
-      <p class="text-center lead">All activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
+      <p class="text-center lead">Try out activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
   <%end%>
 
 <section id="gallery">
