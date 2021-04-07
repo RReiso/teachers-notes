@@ -38,12 +38,21 @@ def logged_in_flash
       if !current_user_method
         flash[:warning] = "Please log in!"
       redirect_to login_path
-      else
-        #if user tries to access "activities/new" or "activities/nr/edit" of another user:
-        if session[:user_id].to_s != params[:user_id]
-          no_access #(in application_controller)
-        end
-    end
+      end
+    
+  end
+
+  def is_author(activity) #checks if the current logged in user is the author of the activity
+     session[:user_id] == activity.user_id
   end
   
+def is_current_user #checks if the current logged in user is accesing what he is authorized to do (new/edit)
+  session[:user_id].to_s == params[:user_id] 
+end
+
+def restrict_unauthorized_access
+  if !is_current_user #if user tries to access "activities/new" or "activities/nr/edit" of another user:
+          no_access #(in application_controller)
+        end
+end
 end

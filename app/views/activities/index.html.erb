@@ -1,14 +1,16 @@
 
 <div class="create-activity-heading mt-2 mt-ms-4">
-  <%if !current_user_method%>
-			<h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold">Activities</h1>
-       </div>
-      <p class="text-center lead">All activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
-      
-      <%else%>
+  <%if is_current_user%>
 			<h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold">My activities</h1>
       </div>
-<%end%>
+			
+      
+      <%else%>
+      
+      <h1 class=" p-3 pt-sm-5 text-uppercase fs-2 fw-bold">Activities</h1>
+       </div>
+      <p class="text-center lead">All activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
+  <%end%>
 
 <section id="gallery">
   <div class="container">
@@ -34,7 +36,7 @@
          <%# methods in application_controller: %>
         <%=link_to get_user_name(activity), user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
-        <%if current_user_method%>
+        <%if is_author(activity)%>
         <%=link_to "Edit", edit_user_activity_path(@user, activity), class: "btn btn-secondary btn-sm"%>
         <%=link_to "Delete", user_activity_path(@user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
         <%end%>

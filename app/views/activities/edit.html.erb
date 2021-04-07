@@ -1,13 +1,13 @@
 <div class="container">
-<% provide(:title, 'Create activity') %>
+<% provide(:title, 'Edit activity') %>
 	<div class="form-group mb-3">
   <div class="create-activity-heading">
   <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
-			<h1 class="text-center p-3 pt-sm-5 text-uppercase fs-2 fw-bold">Create activity</h1>
+			<h1 class="text-center p-3 pt-sm-5 text-uppercase fs-2 fw-bold">Edit activity</h1>
       </div>
 	</div>
  <div class="create-wrapper card fs-5">
-	<%=form_for [@user, @new_activity] do |f|%>
+	<%=form_for [@user, @activity] do |f|%>
 
 <div class="form-group mb-3">
 <%= f.label :title, "Activity title:", class: "control-label" %>
@@ -52,10 +52,10 @@
 </div>
 
 
-
             <div class="form-group button">
+<%=link_to "Cancel", user_activities_path(@user), class: "btn btn-secondary px-3 mx-1"%>
             
-              <%=f.submit "Create", class: "btn btn-primary px-4"%>
+              <%=f.submit "Save", class: "btn btn-primary px-4 mx-1"%>
 						</div>
             
             

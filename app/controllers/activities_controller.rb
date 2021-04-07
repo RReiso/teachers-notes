@@ -1,6 +1,8 @@
 class ActivitiesController < ApplicationController
 before_action :require_current_user, only: [:new, :edit] #(in sessions_helper)
+before_action :restrict_unauthorized_access, only: [:new, :edit] #(in sessions_helper)
 before_action :find_user_by_id, only: [:new, :edit, :create, :destroy, :update, :index]#private
+before_action :find_activity_by_id, only: [:edit, :destroy]#private
 
 
   def index #users/nr/activities (user_activities_path(user))
@@ -15,7 +17,7 @@ before_action :find_user_by_id, only: [:new, :edit, :create, :destroy, :update, 
   
   def create #after users/nr/activities/new
     #converting an array into a string with comma separated values
-    categories = params[:activity][:categories].join(', ')
+    categories = params[:activity][:category].join(', ')
       
     @user.activities.create(title: params[:activity][:title], description: params[:activity][:description], category: categories)
     flash[:success] = "Activity created!"
@@ -23,10 +25,11 @@ before_action :find_user_by_id, only: [:new, :edit, :create, :destroy, :update, 
   end
 
   def edit
+    
   end
 
 def destroy
-  Activity.find(params[:id]).destroy
+  @activity.destroy
   flash[:success] = "Activity deleted!"
   redirect_to user_activities_path(@user)
 
@@ -42,7 +45,7 @@ elsif params[:all] == "yes" #if user checks "all"
 
 elsif params[:activity] != nil  #if user checks other boxes
   @activities = [] #store filtered results
-      categories= params[:activity][:categories] #array of checked categories
+      categories= params[:activity][:category] #array of checked categories
       categories.each do |c|
         activity = Activity.all.where("category like ?", "%#{c}%")
         if activity != [] #"if activity" doesn't work because "where" returns empty record []
@@ -63,5 +66,8 @@ end
   @user = User.find(params[:user_id])
  end
 
+ def find_activity_by_id
+  @activity = Activity.find(params[:id])
+ end
 
 end

@@ -28,13 +28,25 @@
   padding-right: 0.5rem;
 }
 
-@media (max-width: 300px) {
+#brand-text{
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-family:"Balsamiq Sans";
+  color:#053e80;
+  
+};
+
+#brand-text span{
+  color:#a51c0a;
+}
+
+@media (max-width: 321px) {
   #brand-text {
     display: none;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
   #brand-text {
     font-size: 1.1rem;
   }
@@ -51,17 +63,7 @@ body{
   background-color: rgb(255, 253, 246) !important;
   color: rgb(44, 44, 49)!important;
 }
-#brand-text{
-  font-size: 1.25rem;
-  letter-spacing: 1px;
-  font-family:"Balsamiq Sans";
-  color:#053e80;
-  
-};
 
-#brand-text span{
-  color:#a51c0a;
-}
 
 
  .navigation{

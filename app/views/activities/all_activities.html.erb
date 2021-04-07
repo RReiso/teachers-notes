@@ -15,28 +15,28 @@
   <%= label_tag :popular, "Popular", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
-  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "games", nil)%>
-  <%= label_tag :activity_categories_games, "Games", class: "form-check-label"%>
+  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "games", nil)%>
+  <%= label_tag :activity_category_games, "Games", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
-  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
-  <%= label_tag :activity_categories_ice_breakers, "Ice breakers", class: "form-check-label"%>
+  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
+  <%= label_tag :activity_category_ice_breakers, "Ice breakers", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
-  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
-  <%= label_tag :activity_categories_vocabulary, "Vocabulary", class: "form-check-label"%>
+  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
+  <%= label_tag :activity_category_vocabulary, "Vocabulary", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
-  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
-  <%= label_tag :activity_categories_brain_teasers, "Brain teasers", class: "form-check-label"%>
+  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
+  <%= label_tag :activity_category_brain_teasers, "Brain teasers", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
-  <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
-  <%= label_tag :activity_categories_music, "Music", class: "form-check-label"%>
+  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
+  <%= label_tag :activity_category_music, "Music", class: "form-check-label"%>
 </div>
 <div class="form-check mx-2">
- <%= check_box("activity", "categories", {:multiple => true, class: 'form-check-input'}, "movement", nil)%>
-  <%= label_tag :activity_categories_movement, "Movement", class: "form-check-label"%>
+ <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "movement", nil)%>
+  <%= label_tag :activity_category_movement, "Movement", class: "form-check-label"%>
 </div>
 
 </div>
@@ -72,6 +72,11 @@
          <%# methods in application_controller: %>
         <%=link_to get_user_name(activity), user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
+        <%if is_author(activity)%>
+        <%=link_to "Edit", edit_user_activity_path(current_user_method, activity), class: "btn btn-secondary btn-sm"%>
+        <%=link_to "Delete", user_activity_path(current_user_method, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+        <%else%>
+        <%end%>
         <hr>
         <p class="activity-cta text-center ">Tried this activity? Leave a comment and share your experience!</p>
         <div class="user-action-buttons">
