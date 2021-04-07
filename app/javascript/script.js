@@ -11,3 +11,19 @@ window.checkForm = function (form) {
 		return false;
 	}
 };
+
+document.addEventListener("click", (event) => {
+	const clickedElement = event.target.closest(".heart_icon");
+  const loggedInUser = document.querySelector("#logged-in")
+	if (clickedElement && loggedInUser) {
+		clickedElement.classList.toggle("liked");
+		// let id = clickedElement.getAttribute("data-food-type-id");
+		// fetch(`/types/${id}`)
+		// 	.then((response) => response.text())
+		// 	.then((data) => {
+		// 		clickedElement.parentNode.children[1].innerHTML = data;
+		console.log("ir");
+		// 	});
+	}
+
+});

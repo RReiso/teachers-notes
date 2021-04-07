@@ -70,18 +70,17 @@
         <p class=" text-justify"><%=activity.description%></p>
         <p >Posted by:
          <%# methods in application_controller: %>
-        <%=link_to get_user_name(activity), user_activities_path(get_user(activity)), class: "user-name"%>
+        <%=link_to get_user(activity).name, user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
         <%if is_author(activity)%>
-        <%=link_to "Edit", edit_user_activity_path(current_user_method, activity), class: "btn btn-secondary btn-sm"%>
-        <%=link_to "Delete", user_activity_path(current_user_method, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
-        <%else%>
+        <%=link_to "Edit", edit_user_activity_path(logged_in_user, activity), class: "btn btn-secondary btn-sm"%>
+        <%=link_to "Delete", user_activity_path(logged_in_user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
         <%end%>
         <hr>
         <p class="activity-cta text-center ">Tried this activity? Leave a comment and share your experience!</p>
         <div class="user-action-buttons">
-       <a href="" class="btn btn-primary btn-sm">Comments</a>
-       <%if !current_user_method%>
+        <%=link_to "Comments", user_activity_path(get_user(activity), activity), class: "btn btn-primary btn-sm"%>
+       <%if !logged_in_user%>
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
         <%else%>
         <i class=" heart_icon fas fa-heart fa-2x"  ></i>

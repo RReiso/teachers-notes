@@ -6,15 +6,11 @@ class ApplicationController < ActionController::Base
       redirect_to :all_activities
     end
 
-    def get_user_name(activity)
-  get_user(activity)[:name]
-  
-end
 
 def get_user(activity)
   User.find(activity.user_id)
   
 end
-helper_method :get_user_name, :get_user
+helper_method :get_user
     
 end

@@ -10,7 +10,7 @@ module SessionsHelper
 #   User.find_by(id: session[:user_id])
 # end
 # This would work fine, but it would hit the database multiple times if, e.g., current_user appeared multiple times on a page. Instead, follow Ruby convention by storing the result of User.find_by in an instance variable, which hits the database the first time but returns the instance variable immediately on subsequent invocations:
-  def current_user_method
+  def logged_in_user
     if @current_user.nil?
       @current_user = User.find_by(id: session[:user_id])
     else
@@ -28,14 +28,14 @@ module SessionsHelper
 
   #Inform user if trying to access login/signup path while already logged in:
 def logged_in_flash
-      if current_user_method
+      if logged_in_user
         flash[:info] = "Already logged in!"
       redirect_to root_path
       end
     end
 
     def request_login
-      if !current_user_method
+      if !logged_in_user
         flash[:warning] = "Please log in!"
       redirect_to login_path
       end

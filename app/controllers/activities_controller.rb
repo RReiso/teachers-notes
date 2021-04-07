@@ -4,8 +4,8 @@ class ActivitiesController < ApplicationController
 	before_action :restrict_unauthorized_access, only: %i[new edit]
 
 	#private:
-	before_action :find_user_by_id, only: %i[new edit create destroy update index]
-	before_action :find_activity_by_id, only: %i[edit update destroy]
+	before_action :find_user_by_id, only: %i[show new edit create destroy update index]
+	before_action :find_activity_by_id, only: %i[show edit update destroy]
 
 	def index #users/nr/activities (user_activities_path(user))
 		@activities = Activity.where(user_id: params[:user_id])
@@ -16,27 +16,26 @@ class ActivitiesController < ApplicationController
 	end
 
 	def create #after users/nr/activities/new
-		#converting an array into a string with comma separated values
-		categories = params[:activity][:category].join(', ')
-
 		@user.activities.create(
 			title: params[:activity][:title],
 			description: params[:activity][:description],
-			category: categories,
+			category: string_of_categories,
 		)
 		flash[:success] = 'Activity created!'
 		redirect_to user_activities_path(@user)
 	end
 
+def show
+  
+end
+
 	def edit; end
 
 	def update
-		categories = params[:activity][:category].join(', ')
-
 		@activity.update(
 			title: params[:activity][:title],
 			description: params[:activity][:description],
-			category: categories,
+			category: string_of_categories, #private method
 		)
 		flash[:success] = 'Saved!'
 		redirect_to user_activities_path(@user)
@@ -84,4 +83,8 @@ class ActivitiesController < ApplicationController
 	def find_activity_by_id
 		@activity = Activity.find(params[:id])
 	end
+
+  def string_of_categories #converting an array into a string with comma separated values
+    params[:activity][:category].join(', ')
+  end
 end
