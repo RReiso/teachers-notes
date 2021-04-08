@@ -17,13 +17,14 @@ document.addEventListener("click", (event) => {
   const loggedInUser = document.querySelector("#logged-in")
 	if (clickedElement && loggedInUser) {
 		clickedElement.classList.toggle("liked");
-		// let id = clickedElement.getAttribute("data-food-type-id");
-		// fetch(`/types/${id}`)
-		// 	.then((response) => response.text())
-		// 	.then((data) => {
-		// 		clickedElement.parentNode.children[1].innerHTML = data;
-		console.log("ir");
-		// 	});
-	}
+const id = clickedElement.getAttribute("data-activity-id");
+		  fetch(`/activities/${id}`).then(response => response.json()).then(data => {
+      console.log(data);
+      document.q
+		  // fetch(`/activities/${id}`).then((response) => response.text()).then(data => {
+      // clickedElement.parentNode.children[1].innerHTML = data
+    })
+  }
+	});
 
-});
+

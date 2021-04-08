@@ -74,6 +74,19 @@ end
 		end
 	end
 
+  def update_heart_count
+    activity = Activity.find(params[:id])
+    
+    if !activity.heart_count
+      new_heart_count = 0
+    else  
+      new_heart_count = activity.heart_count + 1
+    end  
+    activity.update(heart_count: new_heart_count)
+    hash = {heart_count: activity.heart_count}
+    render json: hash
+  end
+
 	private
 
 	def find_user_by_id
