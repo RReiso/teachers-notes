@@ -13,6 +13,8 @@ Rails
     get "/activities/:id", to: "activities#update_heart_count"
     
     resources :users do
-      resources :activities
+      resources :activities do
+        resources :comments
+      end
     end
   end

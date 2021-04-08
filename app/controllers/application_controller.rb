@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
       redirect_to :all_activities
     end
 
+    def find_user_by_user_id
+		@user = User.find(params[:user_id])
+	end
+
+	
+
 
 def get_user(activity)
   User.find(activity.user_id)

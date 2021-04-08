@@ -19,7 +19,7 @@
         </p>
         <p class=" text-justify"><%=@activity.description%></p>
         <p >Posted by:
-         <%# methods in application_controller: %>
+         <%# method in application_controller: %>
         <%=link_to get_user(@activity).name, user_activities_path(get_user(@activity)), class: "user-name"%>
         </p>
         <%if is_author(@activity)%>
@@ -48,14 +48,27 @@
    <p class="lead">Comments</p>
 
    <div class="container">
+    <div class="column">
+
+    <%@comments.each  do |comment|%>
+    
+    <div class="card bg-light">
+    <p><%=@comment.username%></p>
+    <p><%=@comment.body%></p>
+</div>
+</div>
+</div>
+
+
+   <div class="container">
 <% provide(:title, 'Comments') %>
 	
- <div class="create-wrapper card fs-5">
-	<%=form_for @comment do |f|%>
+ <div class="create-wrapper card pt-4 fs-5">
+	<%=form_for [@user, @activity, @new_comment] do |f|%>
 
 <div class="form-group mb-3">
 <%= f.label :body, "Your comment:", class: "sr-only" %>
-<%= f.text_area :body, class: "form-control", required: true%>
+<%= f.text_area :body, class: "form-control",rows: "4", required: true%>
 	</div>
 
 

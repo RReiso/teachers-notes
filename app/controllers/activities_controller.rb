@@ -4,8 +4,8 @@ class ActivitiesController < ApplicationController
 	before_action :restrict_unauthorized_access, only: %i[new edit]
 
 	#private:
-	before_action :find_user_by_id, only: %i[show new edit create destroy update index]
-	before_action :find_activity_by_id, only: %i[show edit update destroy]
+	before_action :find_user_by_user_id, only: %i[new edit create destroy update index] #in apllication_controller
+	before_action :find_activity_by_id, only: %i[edit update destroy]#private
 
 	def index #users/nr/activities (user_activities_path(user))
 		@activities = Activity.where(user_id: params[:user_id])
@@ -88,10 +88,6 @@ end
   end
 
 	private
-
-	def find_user_by_id
-		@user = User.find(params[:user_id])
-	end
 
 	def find_activity_by_id
 		@activity = Activity.find(params[:id])
