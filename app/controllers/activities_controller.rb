@@ -78,7 +78,7 @@ end
     activity = Activity.find(params[:id])
     
     if !activity.heart_count
-      new_heart_count = 0
+      new_heart_count = 1
     else  
       new_heart_count = activity.heart_count + 1
     end  

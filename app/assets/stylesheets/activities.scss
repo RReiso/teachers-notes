@@ -78,6 +78,7 @@ display: block !important;
   display:flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .user-action-buttons *{
@@ -96,6 +97,9 @@ display: block !important;
 
 .liked{
   color: rgb(235, 1, 1);
+}
+.bold{
+  font-weight:bold;
 }
 
 .card-icon{

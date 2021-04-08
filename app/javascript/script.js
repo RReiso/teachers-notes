@@ -1,6 +1,6 @@
 console.log("hello");
+//check and warn user if password doesn't match with confirmation
 window.checkForm = function (form) {
-	// console.log(form["user[password]"].value);
 	if (
 		form["user[password]"].value !== form["user[password_confirmation]"].value
 	) {
@@ -12,19 +12,25 @@ window.checkForm = function (form) {
 	}
 };
 
-document.addEventListener("click", (event) => {
-	const clickedElement = event.target.closest(".heart_icon");
-  const loggedInUser = document.querySelector("#logged-in")
-	if (clickedElement && loggedInUser) {
-		clickedElement.classList.toggle("liked");
-const id = clickedElement.getAttribute("data-activity-id");
-		  fetch(`/activities/${id}`).then(response => response.json()).then(data => {
-      console.log(data);
-      document.q
-		  // fetch(`/activities/${id}`).then((response) => response.text()).then(data => {
-      // clickedElement.parentNode.children[1].innerHTML = data
-    })
-  }
-	});
+document.addEventListener("click", updateHeartCount);
+
+function updateHeartCount(event) {
+	const loggedIn = document.querySelector("#logged-in");
+	if (loggedIn) {
+		const clickedElement = event.target.closest(".heart_icon");
+
+		if (clickedElement && !clickedElement.classList.contains("liked")) {
+			const id = clickedElement.getAttribute("data-activity-id");
+			fetch(`/activities/${id}`)
+				.then((response) => response.json())
+				.then((data) => {
+					const heartCount = document.querySelector(`#heart-count-${id}`);
+					heartCount.innerText = data.heart_count;
+					clickedElement.classList.add("liked");
+					heartCount.classList.add("bold");
+				});
+		}
+	}
+}
 
 
