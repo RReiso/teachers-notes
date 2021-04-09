@@ -48,19 +48,26 @@ def logged_in_flash
 
   def is_comment_author(comment) #checks if the current logged in user is the author of the comment
     user = User.find_by(name: comment.user )
-    puts comment.inspect
-    puts user.inspect
      session[:user_id] == user.id
     
   end
   
-def is_current_user #checks if the current logged in user is accesing his own content
+def is_current_user #checks if the current logged in user is accesing their activities
   session[:user_id].to_s == params[:user_id] 
 end
 
-def restrict_unauthorized_access
-  if !is_current_user #if user tries to access "activities/new" or "activities/nr/edit" of another user:
-          no_access #(in application_controller)
-        end
+def restrict_activities_access
+  activity = Activity.find_by_id(params[:id])
+  if activity.nil? || !is_activity_author(activity) 
+    no_access
+  end
 end
+
+def restrict_comments_access
+  comment = Comment.find_by_id(params[:id])
+  if comment.nil? || !is_comment_author(comment) 
+    no_access
+  end
+end
+
 end

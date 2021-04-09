@@ -1,12 +1,13 @@
 class ActivitiesController < ApplicationController
 	#(in sessions_helper):
 	before_action :no_access, only: %i[show] #%i - syntax??? I think VS extension is doing this
-	before_action :request_login, only: %i[new edit] #%i - syntax??? I think VS extension is doing this
-	before_action :restrict_unauthorized_access, only: %i[new edit]
+	before_action :request_login, only: %i[new edit] #in sessions_helper
+	before_action :restrict_activities_access, only: %i[new edit]#in_sessions_helper
 
 	#private:
-	before_action :find_user_by_user_id, only: %i[new edit create destroy update index] #in apllication_controller
-	before_action :find_activity_by_id, only: %i[edit update destroy]#private
+	before_action :find_user_by_user_id,
+	              only: %i[new edit create destroy update index] #in apllication_controller
+	before_action :find_activity_by_id, only: %i[edit update destroy] #private
 
 	def index #users/nr/activities (user_activities_path(user))
 		@activities = Activity.where(user_id: params[:user_id])
@@ -26,9 +27,7 @@ class ActivitiesController < ApplicationController
 		redirect_to user_activities_path(@user)
 	end
 
-def show
-  
-end
+	def show; end
 
 	def edit; end
 
@@ -75,18 +74,18 @@ end
 		end
 	end
 
-  def update_heart_count
-    activity = Activity.find(params[:id])
-    
-    if !activity.heart_count
-      new_heart_count = 1
-    else  
-      new_heart_count = activity.heart_count + 1
-    end  
-    activity.update(heart_count: new_heart_count)
-    hash = {heart_count: activity.heart_count}
-    render json: hash
-  end
+	def update_heart_count
+		activity = Activity.find(params[:id])
+
+		if !activity.heart_count
+			new_heart_count = 1
+		else
+			new_heart_count = activity.heart_count + 1
+		end
+		activity.update(heart_count: new_heart_count)
+		hash = { heart_count: activity.heart_count }
+		render json: hash
+	end
 
 	private
 
@@ -94,7 +93,7 @@ end
 		@activity = Activity.find(params[:id])
 	end
 
-  def string_of_categories #converting an array into a string with comma separated values
-    params[:activity][:category].join(', ')
-  end
+	def string_of_categories #converting an array into a string with comma separated values
+		params[:activity][:category].join(', ')
+	end
 end

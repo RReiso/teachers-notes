@@ -7,9 +7,14 @@ class ApplicationController < ActionController::Base
     end
 
     def find_user_by_user_id
-		@user = User.find(params[:user_id])
+      if User.find_by_id(params[:user_id]).nil?
+      no_access
+      else
+		@user = User.find_by_id(params[:user_id])
+      end
 	end
 
+  
 	
 
 
