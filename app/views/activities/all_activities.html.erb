@@ -41,7 +41,7 @@
 
 </div>
 
-              <%=button_tag "Filter", class: "btn btn-primary btn-sm px-4  right " %>
+              <%=button_tag "Filter", class: "btn btn-primary btn px-4  right " %>
 </div>
 <%end%>
 </section>
@@ -49,12 +49,12 @@
 
 
 <section id="gallery">
-  <div class="container">
+  <div class="container ">
     <div class="row">
 
     <%@activities.each  do |activity|%>
     <div class="col-lg-6 mb-4">
-    <div class="card bg-light print">
+    <div class="mt-2 card p-2 bg-light print">
       <div class="card-body">
       <div class="activity-heading">
       <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
@@ -67,19 +67,19 @@
           <span class="category"><%=categ%></span>
         <%end%>
         </p>
-        <p class=" text-justify"><%=activity.description%></p>
-        <p >Posted by:
+        <p class="fs-125 text-justify"><%=activity.description%></p>
+        <p class="fs-125">Posted by:
          <%# methods in application_controller: %>
         <%=link_to get_user(activity).name, user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
         <%if is_author(activity)%>
-        <%=link_to "Edit", edit_user_activity_path(logged_in_user, activity), class: "btn btn-secondary btn-sm"%>
-        <%=link_to "Delete", user_activity_path(logged_in_user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+        <%=link_to "Edit", edit_user_activity_path(logged_in_user, activity), class: "btn btn-secondary btn"%>
+        <%=link_to "Delete", user_activity_path(logged_in_user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn"%>
         <%end%>
         <hr>
-        <p class="activity-cta text-center ">Tried this activity? Leave a comment and share your experience!</p>
+        <p class="fs-125 text-center ">Tried this activity? Leave a comment and share your experience!</p>
         <div class="user-action-buttons">
-        <%=link_to "Comments", user_activity_comments_path(get_user(activity), activity), class: "btn btn-primary btn-sm"%>
+        <%=link_to "Comments", user_activity_comments_path(get_user(activity), activity, anchor: "comments"), class: "btn btn-primary btn"%>
        <%if !logged_in_user%>
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
         <%else%>

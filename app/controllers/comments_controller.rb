@@ -1,10 +1,15 @@
 class CommentsController < ApplicationController
-before_action :find_user_by_user_id, only: %i[index]#in application_controller
-	before_action :find_activity_by_activity_id, only: %i[index]#private
+before_action :find_user_by_user_id, only: %i[index create]#in application_controller
+	before_action :find_activity_by_activity_id, only: %i[index create]#private
 
   def index
-    @comments = Comment.where(activity_id:params[:activity_id])
+    @comments = Comment.where(activity_id: params[:activity_id])
     @new_comment = Comment.new
+  end
+
+  def create
+    @activity.comments.create(user: logged_in_user.name, body: params[:comment][:body])
+    redirect_to user_activity_comments_path(@user, @activity, anchor: 'comments')
   end
  
 

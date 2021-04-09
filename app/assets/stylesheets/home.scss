@@ -59,8 +59,12 @@ ul{
   margin-bottom:0 !important; 
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
-  background-color: rgb(255, 253, 246) !important;
+  background-color: rgb(255, 254, 249) !important;
   color: rgb(44, 44, 49)!important;
 }
 

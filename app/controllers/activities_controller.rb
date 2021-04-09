@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
 	#(in sessions_helper):
+	before_action :no_access, only: %i[show] #%i - syntax??? I think VS extension is doing this
 	before_action :request_login, only: %i[new edit] #%i - syntax??? I think VS extension is doing this
 	before_action :restrict_unauthorized_access, only: %i[new edit]
 
