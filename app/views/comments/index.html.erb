@@ -1,6 +1,6 @@
 
   <div class="container my-5">
-    <div class="mt-2 p-2 card bg-light print">
+    <div class="mt-2 p-2 card bg-light print create-wrapper">
       <div class="card-body">
       <div class="activity-heading">
       <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
@@ -18,9 +18,9 @@
          <%# method in application_controller: %>
         <%=link_to get_user(@activity).name, user_activities_path(get_user(@activity)), class: "user-name"%>
         </p>
-        <%if is_author(@activity)%>
-        <%=link_to "Edit", edit_user_activity_path(@user, @activity), class: "btn btn-secondary btn"%>
-        <%=link_to "Delete", user_activity_path(@user, @activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn"%>
+        <%if is_activity_author(@activity)%>
+        <%=link_to "Edit", edit_user_activity_path(@user, @activity), class: "btn btn-secondary"%>
+        <%=link_to "Delete", user_activity_path(@user, @activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
         <%end%>
         <hr>
         
@@ -42,16 +42,23 @@
     
 
 <%if @comments != []%>
-   <p class="lead" id="comments">Comments</p>
    <div class="container ">
-    <div class="column card">
+    <div class="column card create-wrapper">
+   <p class="lead" id="comments">Comments</p>
 
     <p><%@comments.inspect%></p>
     <%@comments.each  do |comment|%>
     
-      <div class="card bg-light m-1 m-sm-3">
+      <div class="card  bg-light m-1">
+      <div class="card-body">
       <p><%=comment.user%></p>
-      <p><%=comment.body%></p>
+      <p class="pb-1 mb-1"><%=comment.body%></p>
+      <%if is_comment_author(comment)%>
+      <hr>
+      <%=link_to "Edit", edit_user_activity_comment_path(logged_in_user, @activity, comment), class: "btn btn-secondary btn-sm"%>
+        <%=link_to "Delete", user_activity_comment_path(logged_in_user, @activity, comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+        <%end%>
+        </div>
     </div>
     <%end%>
     </div>

@@ -42,8 +42,16 @@ def logged_in_flash
     
   end
 
-  def is_author(activity) #checks if the current logged in user is the author of the activity
+  def is_activity_author(activity) #checks if the current logged in user is the author of the activity
      session[:user_id] == activity.user_id
+  end
+
+  def is_comment_author(comment) #checks if the current logged in user is the author of the comment
+    user = User.find_by(name: comment.user )
+    puts comment.inspect
+    puts user.inspect
+     session[:user_id] == user.id
+    
   end
   
 def is_current_user #checks if the current logged in user is accesing his own content

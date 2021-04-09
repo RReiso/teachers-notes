@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-before_action :find_user_by_user_id, only: %i[index create]#in application_controller
-	before_action :find_activity_by_activity_id, only: %i[index create]#private
+before_action :find_user_by_user_id, only: %i[index create destroy]#in application_controller
+	before_action :find_activity_by_activity_id, only: %i[index create destroy]#private
 
   def index
     @comments = Comment.where(activity_id: params[:activity_id])
@@ -12,6 +12,12 @@ before_action :find_user_by_user_id, only: %i[index create]#in application_contr
     redirect_to user_activity_comments_path(@user, @activity, anchor: 'comments')
   end
  
+
+  def destroy
+		Comment.find(params[:id]).destroy
+		flash[:success] = 'Comment deleted!'
+		redirect_to user_activity_comments_path(@user, @activity, anchor: 'comments')
+	end
 
   private
   def find_activity_by_activity_id

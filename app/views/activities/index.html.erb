@@ -36,7 +36,7 @@
          <%# methods in application_controller: %>
         <%=link_to get_user(activity).name, user_activities_path(get_user(activity)), class: "user-name"%>
         </p>
-        <%if is_author(activity)%>
+        <%if is_activity_author(activity)%>
         <%=link_to "Edit", edit_user_activity_path(@user, activity), class: "btn btn-secondary btn"%>
         <%=link_to "Delete", user_activity_path(@user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn"%>
         <%end%>
