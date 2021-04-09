@@ -1,0 +1,21 @@
+<div class="container">
+<% provide(:title, 'Edit comment') %>
+	<div class="form-group mb-3">
+  <div class="create-activity-heading">
+  <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
+			<h1 class="text-center p-3 pt-sm-5 text-uppercase fs-3 fw-bold">Edit comment</h1>
+      </div>
+	</div>
+<%=form_for [@user, @activity, @comment] do |f|%>
+
+            <div class="create-wrapper form-group mb-3">
+<%= f.label :body, "Your comment:", class: "sr-only" %>
+<%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
+	</div>
+  <div class="form-group button">
+  <%=link_to "Cancel", user_activity_comments_path(@user, @activity), class: "btn btn-secondary px-3 mx-1"%>
+              <%=f.submit "Save", class: "btn btn-primary px-4"%>
+						</div>
+            
+            <%end%>
+            </div>
