@@ -1,3 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :activity
+	belongs_to :activity
+
+	
 end

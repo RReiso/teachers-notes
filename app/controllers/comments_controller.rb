@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-	before_action :no_access, only: %i[new show]#in sessions_helper
-	before_action :restrict_comments_access, only: %i[edit]#in sessions_helper
+	before_action :no_access, only: %i[new show] #in sessions_helper
+	before_action :restrict_comments_access, only: %i[edit] #private
 	before_action :find_user_by_user_id, only: %i[index create edit destroy] #in application_controller
 	before_action :find_activity_by_activity_id,
 	              only: %i[index create edit destroy] #private
@@ -11,11 +11,9 @@ class CommentsController < ApplicationController
 		@new_comment = Comment.new
 	end
 
-  def show
-  end
+	def show; end
 
-  def new
-  end
+	def new; end
 
 	def create
 		@activity.comments.create(
@@ -30,13 +28,12 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
-    # render plain:params
-  end
-  
-  def update
-    render plain:params
-    
-  end
+		# render plain:params
+	end
+
+	def update
+		render plain: params
+	end
 
 	def destroy
 		Comment.find(params[:id]).destroy
@@ -47,10 +44,15 @@ class CommentsController < ApplicationController
 	private
 
 	def find_activity_by_activity_id
-		@activity = Activity.find(params[:activity_id])
+		@activity = Activity.find_by_id(params[:activity_id])
 	end
 
 	def find_comment_by_id
 		@comment = Comment.find(params[:id])
+	end
+
+	def restrict_comments_access #restrictions on comments/nr/edit
+		comment = Comment.find_by_id(params[:id])
+		no_access if comment.nil? || !is_comment_author(comment)
 	end
 end

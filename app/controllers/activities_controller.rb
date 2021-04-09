@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
 	#(in sessions_helper):
 	before_action :no_access, only: %i[show] #%i - syntax??? I think VS extension is doing this
 	before_action :request_login, only: %i[new edit] #in sessions_helper
-	before_action :restrict_activities_access, only: %i[new edit]#in_sessions_helper
+	before_action :restrict_activities_access, only: %i[edit] #private
 
 	#private:
 	before_action :find_user_by_user_id,
@@ -14,7 +14,11 @@ class ActivitiesController < ApplicationController
 	end
 
 	def new #users/nr/activities/new
-		@new_activity = Activity.new
+		if !is_current_user
+			no_access
+		else
+			@new_activity = Activity.new
+		end
 	end
 
 	def create #after users/nr/activities/new
@@ -95,5 +99,10 @@ class ActivitiesController < ApplicationController
 
 	def string_of_categories #converting an array into a string with comma separated values
 		params[:activity][:category].join(', ')
+	end
+
+	def restrict_activities_access #restrictions on activities/nr/edit
+		activity = Activity.find_by_id(params[:id])
+		no_access if activity.nil? || !is_activity_author(activity)
 	end
 end
