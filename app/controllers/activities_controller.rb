@@ -22,13 +22,18 @@ class ActivitiesController < ApplicationController
 	end
 
 	def create #after users/nr/activities/new
-		@user.activities.create(
-			title: params[:activity][:title],
-			description: params[:activity][:description],
-			category: string_of_categories,
-		)
-		flash[:success] = 'Activity created!'
-		redirect_to user_activities_path(@user)
+		if !params[:activity][:category].present?
+			flash[:warning] = 'Choose a category!'
+			redirect_to new_user_activity_path(@user)
+		else
+			@user.activities.create(
+				title: params[:activity][:title],
+				description: params[:activity][:description],
+				category: string_of_categories,
+			)
+			flash[:success] = 'Activity created!'
+			redirect_to user_activities_path(@user)
+		end
 	end
 
 	def show; end
@@ -36,13 +41,18 @@ class ActivitiesController < ApplicationController
 	def edit; end
 
 	def update
-		@activity.update(
-			title: params[:activity][:title],
-			description: params[:activity][:description],
-			category: string_of_categories, #private method
-		)
-		flash[:success] = 'Saved!'
-		redirect_to user_activities_path(@user)
+		if !params[:activity][:category].present?
+			flash[:warning] = 'Choose a category!'
+			redirect_to edit_user_activity_path(@user, @activity)
+		else
+			@activity.update(
+				title: params[:activity][:title],
+				description: params[:activity][:description],
+				category: string_of_categories, #private method
+			)
+			flash[:success] = 'Saved!'
+			redirect_to user_activities_path(@user)
+		end
 	end
 
 	def destroy
@@ -94,7 +104,7 @@ class ActivitiesController < ApplicationController
 	private
 
 	def find_activity_by_id
-		@activity = Activity.find(params[:id])
+		@activity = Activity.find_by_id(params[:id])
 	end
 
 	def string_of_categories #converting an array into a string with comma separated values
@@ -102,7 +112,7 @@ class ActivitiesController < ApplicationController
 	end
 
 	def restrict_activities_access #restrictions on activities/nr/edit
-		activity = Activity.find_by_id(params[:id])
-		no_access if activity.nil? || !is_activity_author(activity)
+		find_activity_by_id
+		no_access if @activity.nil? || !is_activity_author(@activity)
 	end
 end

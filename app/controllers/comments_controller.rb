@@ -1,14 +1,20 @@
 class CommentsController < ApplicationController
 	before_action :no_access, only: %i[new show] #in sessions_helper
 	before_action :restrict_comments_access, only: %i[edit] #private
-	before_action :find_user_by_user_id, only: %i[index create edit destroy] #in application_controller
+
+	before_action :find_user_by_user_id,
+	              only: %i[index create edit update destroy] #in application_controller
 	before_action :find_activity_by_activity_id,
-	              only: %i[index create edit destroy] #private
-	before_action :find_comment_by_id, only: %i[edit] #private
+	              only: %i[index create edit update destroy] #private
+	before_action :find_comment_by_id, only: %i[edit update destroy] #private
 
 	def index
-		@comments = Comment.where(activity_id: params[:activity_id])
-		@new_comment = Comment.new
+		if @activity.nil?
+			no_access
+		else
+			@comments = Comment.where(activity_id: params[:activity_id])
+			@new_comment = Comment.new
+		end
 	end
 
 	def show; end
@@ -27,16 +33,17 @@ class CommentsController < ApplicationController
 		            )
 	end
 
-	def edit
-		# render plain:params
-	end
+	def edit; end
 
 	def update
-		render plain: params
+		# render plain: params
+		@comment.update(body: params[:comment][:body])
+		flash[:success] = 'Saved!'
+		redirect_to user_activity_comments_path(@user, @activity)
 	end
 
 	def destroy
-		Comment.find(params[:id]).destroy
+		@comment.destroy
 		flash[:success] = 'Comment deleted!'
 		redirect_to user_activity_comments_path(@user, @activity)
 	end
@@ -48,11 +55,12 @@ class CommentsController < ApplicationController
 	end
 
 	def find_comment_by_id
-		@comment = Comment.find(params[:id])
+		@comment = Comment.find_by_id(params[:id])
 	end
 
 	def restrict_comments_access #restrictions on comments/nr/edit
-		comment = Comment.find_by_id(params[:id])
-		no_access if comment.nil? || !is_comment_author(comment)
+		find_comment_by_id
+		find_activity_by_activity_id
+		no_access if @activity.nil? || @comment.nil? || !is_comment_author(@comment)
 	end
 end

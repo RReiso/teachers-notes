@@ -12,10 +12,13 @@ class ApplicationController < ActionController::Base
       else
 		@user = User.find_by_id(params[:user_id])
       end
+
+      
 	end
 
   
 	
+  
 
 
 def get_user(activity)
