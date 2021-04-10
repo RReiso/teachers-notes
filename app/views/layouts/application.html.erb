@@ -15,7 +15,7 @@
   <div class="container-fluid">
   <div class="logo">
     <%=link_to root_path, class: "link" do %>
-    <%=image_tag("logo.png", class: "menu-icon", size: "50x80", alt: "Logo")%>
+    <%=image_tag("Fox.png", class: "menu-icon", alt: "Logo")%>
     <span class="navbar-brand" id="brand-text">Teacher's <span>pocket</span></span>
     </div>
   <%end%>
@@ -64,6 +64,7 @@
     </div>
   </div>
 </nav>
+</main>
 <%# flash messages, class changes according to the type (:success, :warning)%>
 <% flash.each do |type, msg| %>
   <div class="alert alert-<%=type%> alert-dismissible fade show mx-5 my-3" role="alert">
@@ -72,10 +73,57 @@
   </div>
 <% end %>
 <%if @current_user%>
-<p id="logged-in">this is <%=@current_user.name%></p>
-
+<p class="fs-125 py-1 px-3 m-2 bg-light" id="logged-in">Logged in as: <span  class="text-primary"><%=@current_user.name%></span></p>
 <%end%>
     <%= yield %>
+    </main>
+    <footer>
+			<div class="company-info">
+				<div>
+					<ul class=" tp footer-list nobullets">
+						<li>&copy; Teacher's Pocket</li>
+						<li>All Rights Reserved</li>
+						<li>2021</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="fs-125 column-title">Our Location</h4>
+					<hr class="divider-line" />
+					<ul class="footer-list nobullets">
+						<li>Main Floor</li>
+						<li>Clearbrook Ave.</li>
+						<li>Toronto, ON P1L 5Y9</li>
+						<li>Canada</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="fs-125 column-title">Quick Links</h4>
+					<hr class="divider-line" />
+					<ul class="footer-list nobullets">
+						<li><a class="link" href="#">Help Center</a></li>
+						<li><a class="link" href="#">Terms & Conditions</a></li>
+						<li><a class="link" href="#">Privacy Policy</a></li>
+					</ul>
+					<div class="link-icons">
+						<a class="link" href="#">
+							<p class="sr-only">link to company's twitter account</p>
+							<i class="social-media fab fa-twitter fa-lg" aria-hidden="true"></i
+						></a>
+						<a class="link" href="#">
+							<p class="sr-only">link to company's facebook account</p>
+							<i class="social-media fab fa-facebook fa-lg" aria-hidden="true"></i
+						></a>
+						<a class="link" href="#">
+							<p class="sr-only">link to company's instagram account</p>
+							<i class="social-media fab fa-instagram fa-lg" aria-hidden="true"></i
+						></a>
+					</div>
+				</div>
+			</div>
+		
+			
+			</div>
+		</footer>
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   </body>
 </html>

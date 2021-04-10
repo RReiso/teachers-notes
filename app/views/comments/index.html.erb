@@ -95,11 +95,11 @@
 
 <%end%>
 <%else%>
+<p class="lead text-center" id="comments">
 <%if !logged_in_user%>
-
-<p class="lead" id="comments">Log in and be the first to comment!</p>
+<%=link_to "Log in", login_path%> and be the first to comment!</p>
 <%else%>
-<p class="lead" id="comments">Be the first to comment!</p>
+Be the first to comment!</p>
  <div class="container">
 <% provide(:title, 'Comments') %>
 	

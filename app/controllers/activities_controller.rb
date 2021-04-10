@@ -22,6 +22,7 @@ class ActivitiesController < ApplicationController
 	end
 
 	def create #after users/nr/activities/new
+    #checking if param exists:
 		if !params[:activity][:category].present?
 			flash[:warning] = 'Choose a category!'
 			redirect_to new_user_activity_path(@user)
@@ -41,6 +42,7 @@ class ActivitiesController < ApplicationController
 	def edit; end
 
 	def update
+    #checking if param exists:
 		if !params[:activity][:category].present?
 			flash[:warning] = 'Choose a category!'
 			redirect_to edit_user_activity_path(@user, @activity)

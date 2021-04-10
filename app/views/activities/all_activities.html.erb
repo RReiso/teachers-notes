@@ -5,7 +5,7 @@
 <section>
 <%= form_tag(:all_activities, method: "get") do %>
 <div class="categories-div container bg-light my-3 my-sm-5 card">
-<div class="d-flex justify-content-center  px-2 py-1  mx-1 my-2 align-items-center flex-wrap fs-5">
+<div class="d-flex flex-column align-items-start flex-sm-row justify-content-sm-center  px-2 py-1  mx-1 my-2  flex-wrap fs-5">
 <div class="form-check  mx-2">
   <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
   <%= label_tag :all, "All", class: "form-check-label"%>
