@@ -1,5 +1,57 @@
-<h3>Search Result</h3>  
+<h2 class="m-1 pb-1 p-sm-4 fs-4">Search Results</h2>  
+<section id="gallery">
+<%if @results == []%>
+<p class="m-1 mb-4 ps-sm-4 fs-125">No matches</p>
+<%end%>
+  <div class="container ">
+    <div class="row">
 
     <% @results.each do |result| %>  
-        <%= result.title %><br>  
-    <% end %>
+    <div class="col-lg-6 mb-4">
+    <div class="mt-2 card p-2 bg-light print">
+      <div class="card-body">
+      <div class="activity-heading">
+      <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
+        <h5 class="card-title"><%=result.title%></h5>
+        </div>
+        <hr>
+        <p class="categories">
+        <%# splitting the category string by commas %>
+        <%result.category.split(",").each do |categ|%>
+          <span class="category"><%=categ%></span>
+        <%end%>
+        </p>
+        <p class="fs-125 text-justify"><%=result.description%></p>
+        <p class="fs-125">Posted by:
+         <%# methods in application_controller: %>
+        <%=link_to get_user(result).name, user_activities_path(get_user(result)), class: "user-name"%>
+        </p>
+        <%if is_activity_author(result)%>
+        <%=link_to "Edit", edit_user_activity_path(logged_in_user, result), class: "btn btn-secondary btn"%>
+        <%=link_to "Delete", user_activity_path(logged_in_user, result), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn"%>
+        <%end%>
+        <hr>
+        <p class="fs-125 text-center ">Tried this activity? Leave a comment and share your experience!</p>
+        <div class="user-action-buttons">
+        <%=link_to "Comments", user_activity_comments_path(get_user(result), result, anchor: "comments"), class: "btn btn-primary btn"%>
+       <%if !logged_in_user%>
+        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
+        <%else%>
+        <i class=" heart_icon fas fa-heart fa-2x"  data-activity-id=<%=result.id%>></i>
+        <%end%>
+        <span id="heart-count-<%=result.id%>"><%=result.heart_count%></span>
+        <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
+        <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
+        </div>
+      </div>
+     </div>
+    </div>
+    
+     <%end%>
+    </div>
+    </div>
+    </section>
+
+
+
+  

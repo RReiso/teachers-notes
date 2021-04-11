@@ -4,123 +4,115 @@
 
 @import "application.scss";
 
-h1{
- letter-spacing: 3px;
- font-family: "Architects Daughter";
+h1 {
+  letter-spacing: 3px;
+  font-family: "Architects Daughter";
 }
 
-.sub-text{
+.sub-text {
   padding: 1rem;
 }
 
-@media (min-width: 600px){
-  .sub-text{
-
+@media (min-width: 600px) {
+  .sub-text {
     padding: 1rem 5rem;
   }
 }
 
-@media (min-width: 1000px){
-  .sub-text{
-
+@media (min-width: 1000px) {
+  .sub-text {
     padding: 1rem 12rem;
   }
-
 }
-.right{
-//  float:right;
-margin: 0 auto;
-display: block !important;
-// margin-left: auto; 
-// margin-right: 1rem;
-
+.right {
+  //  float:right;
+  margin: 0 auto;
+  display: block !important;
+  // margin-left: auto;
+  // margin-right: 1rem;
 }
-.activity-heading{
-  display:flex;
-  align-items:center;
+.activity-heading {
+  display: flex;
+  align-items: center;
 }
-.categories-div{
-  width:fit-content;
-  display: flex ;
+.categories-div {
+  width: fit-content;
+  display: flex;
   align-items: center;
   flex-direction: column;
-  padding:1rem;
+  padding: 1rem;
 }
-.category{
+.category {
   // border:1px solid orangered;
   background-color: #6f90af;
-  padding:0.125rem 0.25rem;
-  margin-right:0.25rem;
-  border-radius:4px;
+  padding: 0.125rem 0.25rem;
+  margin-right: 0.25rem;
+  border-radius: 4px;
   font-size: 0.875rem;
-  color:mintcream;
+  color: mintcream;
 }
 
-.text-justify{
+.text-justify {
   text-align: justify;
 }
 
-.user-name{
-  
+.user-name {
   text-decoration: none;
   // background-color: #638f37;
-  padding:0.125rem 0.25rem;
+  padding: 0.125rem 0.25rem;
   // margin-right:0.25rem;
   // border-radius:4px;
   // font-size: 0.875rem;
-  color:#017bfd;
+  color: #017bfd;
 }
 
-.user-name:hover{
-  color:#183da3;
+.user-name:hover {
+  color: #183da3;
 }
-.user-action-buttons{
-  display:flex;
+.user-action-buttons {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.user-action-buttons *{
-  margin: 0 0.5rem; 
+.user-action-buttons * {
+  margin: 0 0.5rem;
 }
 
-.heart_icon{
+.heart_icon {
   margin-right: 0;
-  cursor:pointer;
+  cursor: pointer;
   color: rgb(253, 106, 130);
 }
 
-.heart_icon:hover{
+.heart_icon:hover {
   color: rgb(235, 1, 1);
 }
 
-.liked{
+.liked {
   color: rgb(235, 1, 1);
 }
 
-
-.card-icon{
-  width:5rem;
-  margin:0.5rem;
-  padding-right:1rem;
+.card-icon {
+  width: 5rem;
+  margin: 0.5rem;
+  padding-right: 1rem;
 }
 
-
-
-.create-wrapper{
+.create-wrapper {
   max-width: 800px;
   margin: 1.5rem auto 1rem;
   padding: 1rem;
 }
 
-.create-activity-heading{
+.create-activity-heading {
   margin: 0.5rem 1.5rem;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.create-activity-heading img{
-  padding-right:0;
+.create-activity-heading img {
+  padding-right: 0;
 }
