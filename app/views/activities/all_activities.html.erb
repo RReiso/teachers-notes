@@ -1,102 +1,95 @@
 <header>
-<h1 class="text-center pt-3 mt-1 mt-sm-3 text-uppercase fs-2 fw-bold">Activities</h1>
-<p class ="lead text-center m-1 sub-text">So many ideas, so many possibilities! Look through our ever-growing collection of short activities and games and find new ways how to engage your students!</p>
+  <h1 class="text-center pt-3 mt-1 mt-sm-3 text-uppercase fs-2 fw-bold">Activities</h1>
+  <p class ="lead text-center m-1 sub-text">So many ideas, so many possibilities! Look through our ever-growing collection of short activities and games and find new ways how to engage your students!</p>
 </header>
 <section>
-<%= form_tag(:all_activities, method: "get") do %>
-<div class="categories-div container bg-light my-3 my-sm-5 card">
-<div class="d-flex flex-column align-items-start flex-sm-row justify-content-sm-center  px-2 py-1  mx-1 my-2  flex-wrap fs-5">
-<div class="form-check  mx-2">
-  <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
-  <%= label_tag :all, "All", class: "form-check-label"%>
- </div>
-<div class="form-check mx-2">
-  <%= check_box_tag 'popular', 'yes', false, class: "form-check-input"%>
-  <%= label_tag :popular, "Popular", class: "form-check-label"%>
-</div>
-<div class="form-check mx-2">
-  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "games", nil)%>
-  <%= label_tag :activity_category_games, "Games", class: "form-check-label"%>
-</div>
-<div class="form-check mx-2">
-  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
-  <%= label_tag :activity_category_ice_breakers, "Ice breakers", class: "form-check-label"%>
-</div>
-<div class="form-check mx-2">
-  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
-  <%= label_tag :activity_category_vocabulary, "Vocabulary", class: "form-check-label"%>
-</div>
-<div class="form-check mx-2">
-  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
-  <%= label_tag :activity_category_brain_teasers, "Brain teasers", class: "form-check-label"%>
-</div>
-<div class="form-check mx-2">
-  <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
-  <%= label_tag :activity_category_music, "Music", class: "form-check-label"%>
-</div>
-<div class="form-check mx-2">
- <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "movement", nil)%>
-  <%= label_tag :activity_category_movement, "Movement", class: "form-check-label"%>
-</div>
-
-</div>
-
-              <%=button_tag "Filter", class: "btn btn-primary btn px-4  right " %>
-</div>
-<%end%>
+  <%= form_tag(:all_activities, method: "get") do %>
+    <div class="categories-div container bg-light my-3 my-sm-5 card">
+      <div class="d-flex flex-column align-items-start flex-sm-row justify-content-sm-center  px-2 py-1  mx-1 my-2  flex-wrap fs-5">
+        <div class="form-check  mx-2">
+          <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
+          <%= label_tag :all, "All", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+          <%= check_box_tag 'popular', 'yes', false, class: "form-check-input"%>
+          <%= label_tag :popular, "Popular", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+          <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "games", nil)%>
+          <%= label_tag :activity_category_games, "Games", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+          <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
+          <%= label_tag :activity_category_ice_breakers, "Ice breakers", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+          <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
+          <%= label_tag :activity_category_vocabulary, "Vocabulary", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+          <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
+          <%= label_tag :activity_category_brain_teasers, "Brain teasers", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+          <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
+          <%= label_tag :activity_category_music, "Music", class: "form-check-label"%>
+        </div>
+        <div class="form-check mx-2">
+        <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "movement", nil)%>
+          <%= label_tag :activity_category_movement, "Movement", class: "form-check-label"%>
+        </div>
+      </div>
+      <%=button_tag "Filter", class: "btn btn-primary btn px-4  right " %>
+    </div>
+  <%end%>
 </section>
-
-
-
 <section id="gallery">
   <div class="container ">
     <div class="row">
-
-    <%@activities.each  do |activity|%>
-    <div class="col-lg-6 mb-4">
-    <div class="mt-2 card p-2 bg-light print">
-      <div class="card-body">
-      <div class="activity-heading">
-      <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
-        <h5 class="card-title"><%=activity.title%></h5>
+      <%@activities.each  do |activity|%>
+        <div class="col-lg-6 mb-4">
+          <div class="mt-2 card p-2 bg-light print">
+            <div class="card-body">
+              <div class="activity-heading">
+                <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
+                <h5 class="card-title"><%=activity.title%></h5>
+              </div>
+              <hr>
+              <p class="categories">
+                <%# splitting the category string by commas %>
+                <%activity.category.split(",").each do |categ|%>
+                  <span class="category"><%=categ%></span>
+                <%end%>
+              </p>
+              <p class="fs-125 text-justify"><%=activity.description%></p>
+              <p class="fs-125">Posted by:
+                <%# methods in application_controller: %>
+                <%=link_to get_user(activity).name, user_activities_path(get_user(activity)), class: "user-name"%>
+              </p>
+              <%if is_activity_author(activity)%>
+                <%=link_to "Edit", edit_user_activity_path(logged_in_user, activity), class: "btn btn-secondary btn"%>
+                <%=link_to "Delete", user_activity_path(logged_in_user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn"%>
+              <%end%>
+              <hr>
+              <p class="fs-125 text-center ">Tried this activity? Leave a comment and share your experience!</p>
+              <div class="user-action-buttons">
+                <%=link_to "Comments", user_activity_comments_path(get_user(activity), activity, anchor: "comments"), class: "btn btn-primary btn"%>
+                <%if !logged_in_user%>
+                  <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
+                <%else%>
+                  <i class=" heart_icon fas fa-heart fa-2x"  data-activity-id=<%=activity.id%>></i>
+                <%end%>
+                <span id="heart-count-<%=activity.id%>"><%=activity.heart_count%></span>
+                <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
+                <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
+              </div>
+            </div>
+          </div>
         </div>
-        <hr>
-        <p class="categories">
-        <%# splitting the category string by commas %>
-        <%activity.category.split(",").each do |categ|%>
-          <span class="category"><%=categ%></span>
-        <%end%>
-        </p>
-        <p class="fs-125 text-justify"><%=activity.description%></p>
-        <p class="fs-125">Posted by:
-         <%# methods in application_controller: %>
-        <%=link_to get_user(activity).name, user_activities_path(get_user(activity)), class: "user-name"%>
-        </p>
-        <%if is_activity_author(activity)%>
-        <%=link_to "Edit", edit_user_activity_path(logged_in_user, activity), class: "btn btn-secondary btn"%>
-        <%=link_to "Delete", user_activity_path(logged_in_user, activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn"%>
-        <%end%>
-        <hr>
-        <p class="fs-125 text-center ">Tried this activity? Leave a comment and share your experience!</p>
-        <div class="user-action-buttons">
-        <%=link_to "Comments", user_activity_comments_path(get_user(activity), activity, anchor: "comments"), class: "btn btn-primary btn"%>
-       <%if !logged_in_user%>
-        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
-        <%else%>
-        <i class=" heart_icon fas fa-heart fa-2x"  data-activity-id=<%=activity.id%>></i>
-        <%end%>
-        <span id="heart-count-<%=activity.id%>"><%=activity.heart_count%></span>
-        <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
-        <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
-        </div>
-      </div>
-     </div>
+      <%end%>
     </div>
-    
-     <%end%>
-    </div>
-    </div>
-    </section>
+  </div>
+</section>
     
 
 

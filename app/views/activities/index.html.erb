@@ -1,12 +1,14 @@
-<div class="create-activity-heading mt-2 mt-ms-4">
-  <%if is_current_user%>
-		<h1 class=" pt-3 pt-sm-5 text-uppercase fs-2 fw-bold">My activities</h1>
-</div>
-  <%else%>
-    <h1 class=" pt-3 pt-sm-5 text-uppercase fs-2 fw-bold"><span><%=@user.name%>'s </span>activities</h1>
-</div>
-    <p class="text-center lead pb-2 mb-4">Explore activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
-  <%end%>
+<header>
+  <div class="create-activity-heading mt-2 mt-ms-4">
+    <%if is_current_user%>
+      <h1 class=" pt-3 pt-sm-5 text-uppercase fs-2 fw-bold">My activities</h1>
+  </div>
+    <%else%>
+      <h1 class=" pt-3 pt-sm-5 text-uppercase fs-2 fw-bold"><span><%=@user.name%>'s </span>activities</h1>
+  </div>
+      <p class="text-center lead pb-2 mb-4">Explore activities created by <span><%=link_to @user.name, user_activities_path(@user), class: "user-name"%></span></p>
+    <%end%>
+</header>    
 <section id="gallery">
   <div class="container">
     <div class="row">

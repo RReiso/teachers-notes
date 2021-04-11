@@ -1,60 +1,58 @@
-<div class="container">
-  <% provide(:title, 'Create activity') %>
-  <div class="form-group mb-3">
-    <div class="create-activity-heading">
-      <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
-      <h1 class="text-center p-3 pt-sm-5 text-uppercase fs-2 fw-bold">
-        Create activity
-      </h1>
+<section>
+  <div class="container">
+    <% provide(:title, 'Create activity') %>
+    <div class="form-group mb-3">
+      <div class="create-activity-heading">
+        <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
+        <h1 class="text-center p-3 pt-sm-5 text-uppercase fs-2 fw-bold">
+          Create activity
+        </h1>
+      </div>
     </div>
-  </div>
-  <div class="create-wrapper card fs-5">
-    <%=form_for [@user, @new_activity] do |f|%>
-      <div class="form-group mb-3">
-        <%= f.label :title, "Activity title:", class: "control-label" %>
-        <%= f.text_field :title, class: "form-control", maxlength: "50", required: true%>
-      </div>
-      <div class="form-group mb-4">
-        <%= f.label :description, "Description:", class: "control-label" %>
-        <%= f.text_area :description, class: "form-control", rows: "6", required: true%>
-      </div>
-
-      <p class="control-label  ">Categories:</p>
-      <div class="card container pt-1">
-        <div
-          class="d-flex flex-column align-items-start flex-sm-row justify-content-sm-center  px-2 py-1  mx-1 my-2  flex-wrap"
-        >
-          <div class="form-check mx-2">
-            <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "games", nil)%>
-            <%= label_tag :activity_category_games, "Games", class: "form-check-label"%>
-          </div>
-          <div class="form-check mx-2">
-            <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
-            <%= label_tag :activity_category_ice_breakers, "Ice breakers", class: "form-check-label"%>
-          </div>
-          <div class="form-check mx-2">
-            <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
-            <%= label_tag :activity_category_vocabulary, "Vocabulary", class: "form-check-label"%>
-          </div>
-          <div class="form-check mx-2">
-            <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
-            <%= label_tag :activity_category_brain_teasers, "Brain teasers", class: "form-check-label"%>
-          </div>
-          <div class="form-check mx-2">
-            <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
-            <%= label_tag :activity_category_music, "Music", class: "form-check-label"%>
-          </div>
-
-          <div class="form-check mx-2">
-            <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "movement", nil)%>
-            <%= label_tag :activity_category_movement, "Movement", class: "form-check-label"%>
+    <div class="create-wrapper card fs-5">
+      <%=form_for [@user, @new_activity] do |f|%>
+        <div class="form-group mb-3">
+          <%= f.label :title, "Activity title:", class: "control-label" %>
+          <%= f.text_field :title, class: "form-control", maxlength: "50", required: true%>
+        </div>
+        <div class="form-group mb-4">
+          <%= f.label :description, "Description:", class: "control-label" %>
+          <%= f.text_area :description, class: "form-control", rows: "6", required: true%>
+        </div>
+        <p class="control-label  ">Categories:</p>
+        <div class="card container pt-1">
+          <div
+            class="d-flex flex-column align-items-start flex-sm-row justify-content-sm-center  px-2 py-1  mx-1 my-2  flex-wrap">
+            <div class="form-check mx-2">
+              <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "games", nil)%>
+              <%= label_tag :activity_category_games, "Games", class: "form-check-label"%>
+            </div>
+            <div class="form-check mx-2">
+              <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "ice breakers", nil)%>
+              <%= label_tag :activity_category_ice_breakers, "Ice breakers", class: "form-check-label"%>
+            </div>
+            <div class="form-check mx-2">
+              <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "vocabulary", nil)%>
+              <%= label_tag :activity_category_vocabulary, "Vocabulary", class: "form-check-label"%>
+            </div>
+            <div class="form-check mx-2">
+              <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "brain teasers", nil)%>
+              <%= label_tag :activity_category_brain_teasers, "Brain teasers", class: "form-check-label"%>
+            </div>
+            <div class="form-check mx-2">
+              <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "music", nil)%>
+              <%= label_tag :activity_category_music, "Music", class: "form-check-label"%>
+            </div>
+            <div class="form-check mx-2">
+              <%= check_box("activity", "category", {:multiple => true, class: 'form-check-input'}, "movement", nil)%>
+              <%= label_tag :activity_category_movement, "Movement", class: "form-check-label"%>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="form-group button">
-        <%=f.submit "Create", class: "btn btn-primary px-4"%>
-      </div>
-    <%end%>
+        <div class="form-group button">
+          <%=f.submit "Create", class: "btn btn-primary px-4"%>
+        </div>
+      <%end%>
+    </div>
   </div>
-</div>
+</section>  
