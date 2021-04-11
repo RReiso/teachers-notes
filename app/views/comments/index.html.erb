@@ -1,129 +1,102 @@
-
+<section>
   <div class="container my-5">
     <div class="mt-2 p-2 card bg-light print create-wrapper">
       <div class="card-body">
-      <div class="activity-heading">
-      <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
-        <h5 class="card-title"><%=@activity.title%></h5>
+        <div class="activity-heading">
+          <%=image_tag("pencil.png", class: "card-icon", alt: "Pencil icon")%>
+          <h5 class="card-title"><%=@activity.title%></h5>
         </div>
         <hr>
         <p class="categories">
-        <%# splitting the category string by commas %>
-        <%@activity.category.split(",").each do |categ|%>
-          <span class="category"><%=categ%></span>
-        <%end%>
+          <%# splitting the category string by commas %>
+          <%@activity.category.split(",").each do |categ|%>
+            <span class="category"><%=categ%></span>
+          <%end%>
         </p>
         <p class="fs-125 text-justify"><%=@activity.description%></p>
         <p class="fs-125">Posted by:
-         <%# method in application_controller: %>
-        <%=link_to get_user(@activity).name, user_activities_path(get_user(@activity)), class: "user-name"%>
+          <%# method in application_controller: %>
+          <%=link_to get_user(@activity).name, user_activities_path(get_user(@activity)), class: "user-name"%>
         </p>
         <%if is_activity_author(@activity)%>
-        <%=link_to "Edit", edit_user_activity_path(@user, @activity), class: "btn btn-secondary"%>
-        <%=link_to "Delete", user_activity_path(@user, @activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
+          <%=link_to "Edit", edit_user_activity_path(@user, @activity), class: "btn btn-secondary"%>
+          <%=link_to "Delete", user_activity_path(@user, @activity), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
         <%end%>
         <hr>
-        
         <div class="user-action-buttons">
-       
-       <%if !logged_in_user%>
-        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
-        <%else%>
-        <i class=" heart_icon fas fa-heart fa-2x"  data-activity-id=<%=@activity.id%>></i>
-        <%end%>
-        <span id="heart-count-<%=@activity.id%>"><%=@activity.heart_count%></span>
-        <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
-        <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
+          <%if !logged_in_user%>
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
+          <%else%>
+            <i class=" heart_icon fas fa-heart fa-2x"  data-activity-id=<%=@activity.id%>></i>
+          <%end%>
+          <span id="heart-count-<%=@activity.id%>"><%=@activity.heart_count%></span>
+          <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
+          <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
         </div>
       </div>
-     </div>
     </div>
-    
-    
-
-<%if @comments != []%>
-   <div class="container ">
-    <div class="p-2 column card create-wrapper">
-   <p class="lead p-1 m-1" id="comments">Comments</p>
-
-    <p><%@comments.inspect%></p>
-    <%@comments.each  do |comment|%>
-    
-      <div class="card bg-light m-1 p-1">
-      <div class="card-body p-1">
-      <p class="bold comment-username"><%=comment.user%> said:</p>
-      <p class=" comment-body"><%=comment.body%></p>
-      <%if is_comment_author(comment)%>
-      <hr>
-      <%=link_to "Edit", edit_user_activity_comment_path(logged_in_user, @activity, comment), class: "btn btn-secondary btn-sm"%>
-        <%=link_to "Delete", user_activity_comment_path(logged_in_user, @activity, comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+  </div>
+</section>    
+<section>
+  <%if @comments != []%>
+    <div class="container ">
+      <div class="p-2 column card create-wrapper">
+        <p class="lead p-1 m-1" id="comments">Comments</p>
+        <%@comments.each  do |comment|%>
+          <div class="card bg-light m-1 p-1">
+            <div class="card-body p-1">
+              <p class="bold comment-username"><%=comment.user%> said:</p>
+              <p class=" comment-body"><%=comment.body%></p>
+              <%if is_comment_author(comment)%>
+                <hr>
+                <%=link_to "Edit", edit_user_activity_comment_path(logged_in_user, @activity, comment), class: "btn btn-secondary btn-sm"%>
+                <%=link_to "Delete", user_activity_comment_path(logged_in_user, @activity, comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"%>
+              <%end%>
+            </div>
+          </div>
         <%end%>
-        </div>
-    </div>
-    <%end%>
-    </div>
+      </div>
     </div>
     <%if !logged_in_user%>
       <p class="fs-125 text-center pb-2 mb-5" id="comments" ><%=link_to "Log in", login_path%> to comment!</p>
     <%else%>
-
       <div class="container">
-        <% provide(:title, 'Comments') %>
-	
-          <div class="create-wrapper card pt-4 fs-5">
-	          <%=form_for [@user, @activity, @new_comment] do |f|%>
-
+        <%provide(:title, 'Comments')%>
+        <div class="create-wrapper card pt-4 fs-5">
+	        <%=form_for [@user, @activity, @new_comment] do |f|%>
             <div class="form-group mb-3">
-<%= f.label :body, "Your comment:", class: "sr-only" %>
-<%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
-	</div>
-
-
+              <%= f.label :body, "Your comment:", class: "sr-only" %>
+              <%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
+	          </div>
             <div class="form-group button">
               <%=f.submit "Send", class: "btn btn-primary px-4"%>
 						</div>
-            
-            <%end%>
-            
-				
-	</div>
-</div>
-
-
-
-
-
-<%end%>
-<%else%>
-<p class="fs-125 text-center pb-2 mb-5" id="comments">
-<%if !logged_in_user%>
-<%=link_to "Log in", login_path%> and be the first to comment!</p>
-<%else%>
-Be the first to comment!</p>
- <div class="container">
-<% provide(:title, 'Comments') %>
-	
- <div class="create-wrapper card pt-4 fs-5">
-	<%=form_for [@user, @activity, @new_comment] do |f|%>
-
-<div class="form-group mb-3">
-<%= f.label :body, "Your comment:", class: "sr-only" %>
-<%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
-	</div>
-
-
-            <div class="form-group button">
-              <%=f.submit "Send", class: "btn btn-primary px-4"%>
-						</div>
-            
-            <%end%>
-            
-				
-	</div>
-</div>
-<%end%>
-
-<%end%>
-
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  <%else%>
+    <p class="fs-125 text-center pb-2 mb-5" id="comments">
+      <%if !logged_in_user%>
+        <%=link_to "Log in", login_path%> and be the first to comment!</p>
+      <%else%>
+        Be the first to comment!</p>
+        <div class="container">
+          <% provide(:title, 'Comments') %>
+	        <div class="create-wrapper card pt-4 fs-5">
+	          <%=form_for [@user, @activity, @new_comment] do |f|%>
+              <div class="form-group mb-3">
+                <%= f.label :body, "Your comment:", class: "sr-only" %>
+                <%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
+	            </div>
+              <div class="form-group button">
+                <%=f.submit "Send", class: "btn btn-primary px-4"%>
+						  </div>
+            <%end%>	
+          </div>
+        </div>
+      <%end%>
+  <%end%>
+</section>
 
   
