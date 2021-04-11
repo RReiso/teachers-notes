@@ -16,7 +16,7 @@
   <div class="logo">
     <%=link_to root_path, class: "link" do %>
     <%=image_tag("Fox.png", class: "menu-icon", alt: "Logo")%>
-    <span class="navbar-brand" id="brand-text">Teacher's <span>pocket</span></span>
+    <span class="navbar-brand" id="brand-text">Teacher's <span>notes</span></span>
     </div>
   <%end%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
         </li>
           <%else%>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle px-1" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle " id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Activities
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -73,15 +73,15 @@
   </div>
 <% end %>
 <%if @current_user%>
-<p class="fs-125 py-1 px-3 m-2 bg-light" id="logged-in">Logged in as: <span  class="text-primary"><%=@current_user.name%></span></p>
+<p class="fs-125 p-1 m-2 mx-sm-5 " id="logged-in">You are: <span><%=@current_user.name%></span></p>
 <%end%>
     <%= yield %>
     </main>
     <footer>
-			<div class="company-info">
+			<div class="company-info bg-light">
 				<div>
 					<ul class=" tp footer-list nobullets">
-						<li>&copy; Teacher's Pocket</li>
+						<li>&copy; Teacher's Notes</li>
 						<li>All Rights Reserved</li>
 						<li>2021</li>
 					</ul>

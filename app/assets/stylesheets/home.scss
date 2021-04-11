@@ -33,13 +33,13 @@
   font-size: 1.5rem;
   letter-spacing: 1px;
   font-family:"Balsamiq Sans";
-  color:#053e80;
+  color: #ea5b0c;
   
-};
-
-#brand-text span{
-  color:#a51c0a;
 }
+
+// #brand-text span{
+//   color: #cc4c0c;
+// }
 
 @media (max-width: 321px) {
   #brand-text {
@@ -65,15 +65,15 @@ html{
 }
 
 body{
-  background-color: rgb(255, 254, 249) !important;
+  // background-color: rgb(255, 254, 249) !important;
   color: rgb(44, 44, 49)!important;
 }
 
 
 
  .navigation{
-border-bottom: 1px solid #d1d4d4;
-   background-color: #d3eff8;
+// border-bottom: 1px solid #e2d7a5;
+  //  background-color: #fff6cb;
  }
 
  .nav-link{
@@ -86,8 +86,8 @@ border-bottom: 1px solid #d1d4d4;
  .nav-link:hover{
   //  padding:0;
   //  background-color:var(--bs-primary);
-   color:var(--bs-primary) !important;
-;
+   color:#ea5b0c !important;
+
 
 
 
@@ -95,10 +95,14 @@ border-bottom: 1px solid #d1d4d4;
  }
  #logged-in{
    width: fit-content;
-  border-radius: 4px;
-  border: 1px solid rgb(228, 222, 222);
+  // border-radius: 4px;
+  border-bottom: 1px solid rgb(228, 222, 222);
   // background-color: rgb(170, 196, 206);
 
+ }
+
+ #logged-in span{
+   color: #ea5b0c;
  }
 
 
@@ -110,9 +114,10 @@ border-bottom: 1px solid #d1d4d4;
   font-weight:bold;
 }
 
- footer {padding-bottom:1rem;
-   border-top: 1px solid #d1d4d4;
-	background-color: #d3eff8;
+ footer {
+  //  padding-bottom:1rem;
+   border-top: 1px solid #dddddd;
+	// background-color: #fff2b8;
 	color: rgb(48, 48, 58);
 }
 
@@ -153,6 +158,10 @@ border-bottom: 1px solid #d1d4d4;
 	text-decoration: none;
 	text-align: center;
 	color: inherit;
+}
+
+.link:hover{
+  color: #ea5b0c;
 }
 .nobullets {
 	list-style-type: none;

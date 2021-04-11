@@ -43,16 +43,16 @@
 
 <%if @comments != []%>
    <div class="container ">
-    <div class="column card create-wrapper">
-   <p class="lead" id="comments">Comments</p>
+    <div class="p-2 column card create-wrapper">
+   <p class="lead p-1 m-1" id="comments">Comments</p>
 
     <p><%@comments.inspect%></p>
     <%@comments.each  do |comment|%>
     
-      <div class="card  bg-light m-1">
-      <div class="card-body">
-      <p><%=comment.user%></p>
-      <p class="pb-1 mb-1"><%=comment.body%></p>
+      <div class="card bg-light m-1 p-1">
+      <div class="card-body p-1">
+      <p class="bold comment-username"><%=comment.user%> said:</p>
+      <p class=" comment-body"><%=comment.body%></p>
       <%if is_comment_author(comment)%>
       <hr>
       <%=link_to "Edit", edit_user_activity_comment_path(logged_in_user, @activity, comment), class: "btn btn-secondary btn-sm"%>
@@ -64,7 +64,7 @@
     </div>
     </div>
     <%if !logged_in_user%>
-      <p class="lead" id="comments">Log in to comment!</p>
+      <p class="fs-125 text-center pb-2 mb-5" id="comments" ><%=link_to "Log in", login_path%> to comment!</p>
     <%else%>
 
       <div class="container">
@@ -95,7 +95,7 @@
 
 <%end%>
 <%else%>
-<p class="lead text-center" id="comments">
+<p class="fs-125 text-center pb-2 mb-5" id="comments">
 <%if !logged_in_user%>
 <%=link_to "Log in", login_path%> and be the first to comment!</p>
 <%else%>
