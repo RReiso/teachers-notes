@@ -1,41 +1,38 @@
-<% provide(:title, 'Sign up') %>
- <div class="wrapper">
-	<%=form_for @user, html: {onsubmit: "return checkForm(this);"} do |f|%>
-  <%# error messages after back end validation: 
-     app/views/shared/_error_messages.html.erb.
-  these are not flash messages! These are provided automatically by Active Record:%>
-  <%# In this app, JS does most of the validation, error msg is rendered if email is taken or invalid %>
-  <%= render 'shared/error_messages' %>
-
-	<div class="form-group">
-			<h2>Create account</h2>
+<section>
+  <% provide(:title, 'Sign up') %>
+  <div class="wrapper">
+	  <%=form_for @user, html: {onsubmit: "return checkForm(this);"} do |f|%>
+      <%# error messages after back end validation: 
+      app/views/shared/_error_messages.html.erb.
+      these are not flash messages! These are provided automatically by Active Record:%>
+      <%# In this app, JS does most of the validation, error msg is rendered if email or name is taken or invalid %>
+      <%= render 'shared/error_messages' %>
+      <div class="form-group">
+        <h2>Create account</h2>
+      </div>
+      <div class="form-group">
+        <%= f.label :name, "Username", class: "control-label" %>
+        <%= f.text_field :name, class: "form-control", maxlength: "50", required: true%>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "Email", class: "control-label" %>
+        <%= f.email_field :email, class: "form-control", maxlength: "50", required: true%>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, "Password", class: "control-label" %>
+        <%= f.password_field :password, class: "form-control", minlength: "6", maxlength: "25", required: true%>	
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirm password", class: "control-label" %>
+        <%= f.password_field :password_confirmation, class: "form-control", minlength: "6", maxlength: "25", required: true%>	
+      </div>
+      <div class="form-group button">
+        <%#  after JS validation alert for non matching passwords, button gets disabled, "data:disbale_with:false" keeps it enabled %>
+        <%=f.submit "Create account", data: { disable_with: false}, class: "btn btn-primary"%>
+      </div>
+      <p class="form-group">By creating an account, you agree to our <%=link_to "Terms of Use", "#"%> and our <%=link_to "Privacy Policy", "#"%>.</p>
+      <hr>
+      <p class="form-group note">Already have an account? <%=link_to "Log in", login_path%></p>
+    <%end%>			
 	</div>
-<div class="form-group">
-<%= f.label :name, "Username", class: "control-label" %>
-<%= f.text_field :name, class: "form-control", maxlength: "50", required: true%>
-	</div>
-<div class="form-group">
-<%= f.label :email, "Email", class: "control-label" %>
-<%= f.email_field :email, class: "form-control", maxlength: "50", required: true%>
-						</div>
-<div class="form-group">
-<%= f.label :password, "Password", class: "control-label" %>
-<%= f.password_field :password, class: "form-control", minlength: "6", maxlength: "25", required: true%>	
-						</div>
-<div class="form-group">
-<%= f.label :password_confirmation, "Confirm password", class: "control-label" %>
-<%= f.password_field :password_confirmation, class: "form-control", minlength: "6", maxlength: "25", required: true%>	
-						</div>
-            <div class="form-group button">
-            <%#  after JS validation alert for non matching passwords, button gets disabled, "data:disbale_with:false" keeps it enabled %>
-              <%=f.submit "Create account", data: { disable_with: false}, class: "btn btn-primary"%>
-						</div>
-            
-            
-						<p class="form-group">By creating an account, you agree to our <%=link_to "Terms of Use", "#"%> and our <%=link_to "Privacy Policy", "#"%>.</p>
-						<hr>
-						<p class="form-group note">Already have an account? <%=link_to "Log in", login_path%></p>
-            <%end%>
-            
-				
-	</div>
+</section>  
