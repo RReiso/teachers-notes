@@ -1,4 +1,4 @@
-console.log("hello");
+
 //check and warn user if password doesn't match with confirmation
 window.checkForm = function (form) {
   if (

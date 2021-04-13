@@ -60,20 +60,7 @@
     <%if !logged_in_user%>
       <p class="fs-125 text-center pb-2 mb-5" id="comments" ><%=link_to "Log in", login_path%> to comment!</p>
     <%else%>
-      <div class="container">
-        <%provide(:title, 'Comments')%>
-        <div class="create-wrapper card pt-4 fs-5">
-	        <%=form_for [@user, @activity, @new_comment] do |f|%>
-            <div class="form-group mb-3">
-              <%= f.label :body, "Your comment:", class: "sr-only" %>
-              <%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
-	          </div>
-            <div class="form-group button">
-              <%=f.submit "Send", class: "btn btn-primary px-4"%>
-						</div>
-          <%end%>
-        </div>
-      </div>
+       <%= render 'shared/create_comment_box' %>
     <%end%>
   <%else%>
     <p class="fs-125 text-center pb-2 mb-5" id="comments">
@@ -81,20 +68,7 @@
         <%=link_to "Log in", login_path%> and be the first to comment!</p>
       <%else%>
         Be the first to comment!</p>
-        <div class="container">
-          <% provide(:title, 'Comments') %>
-	        <div class="create-wrapper card pt-4 fs-5">
-	          <%=form_for [@user, @activity, @new_comment] do |f|%>
-              <div class="form-group mb-3">
-                <%= f.label :body, "Your comment:", class: "sr-only" %>
-                <%= f.text_area :body, class: "form-control",rows: "4", placeholder: "Type your comment here...", required: true%>
-	            </div>
-              <div class="form-group button">
-                <%=f.submit "Send", class: "btn btn-primary px-4"%>
-						  </div>
-            <%end%>	
-          </div>
-        </div>
+        <%= render 'shared/create_comment_box' %>
       <%end%>
   <%end%>
 </section>
