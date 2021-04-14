@@ -57,8 +57,9 @@ class ActivitiesController < ApplicationController
 	end
 
 	def all_activities
-		#if user checks popular or all, method in activity.rb:
-		if @activities = Activity.get_all_activities(params[:popular], params[:all])
+    @activities = Activity.get_all_activities(params[:popular], params[:all])
+		#if user checks "popular" or "all", method in activity.rb:
+		if @activities 
 			return
 		elsif params[:activity] != nil
 			#if user checks other boxes:
