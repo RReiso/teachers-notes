@@ -62,6 +62,14 @@ body {
 	list-style-type: none;
 }
 
+.orange{
+  color: #ea5b0c !important;
+}
+
+.width-fc{
+  width: fit-content !important;
+}
+
 /* || NAVIGATION */
 
 .menu-icon {
@@ -82,7 +90,6 @@ body {
 	font-size: 1.5rem;
 	letter-spacing: 1px;
 	font-family: "Balsamiq Sans";
-	color: #ea5b0c;
 }
 
 #brand-text-short {
@@ -95,7 +102,7 @@ body {
 }
 
 .navbar-collapse * {
-	padding-right: 0.5rem;
+	padding-right: 0.125rem;
 }
 
 ul {
@@ -114,6 +121,19 @@ ul {
 
 /* || HOME */
 
+.home{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .image-slide {
 	width: 70%;
 	margin: 0 auto;
@@ -123,10 +143,8 @@ ul {
 	border-radius: 5px;
 }
 
-.carousel-caption{
-  padding-top:0 !important;
-  padding-bottom:0 !important;
-  border-radius: 17px;
+.car-cap{
+  border-radius: 7px;
 }
 
 /* || FOOTER */
@@ -179,7 +197,7 @@ footer {
 
 }
 
-@media (max-width: 23.75em) {
+@media (max-width: 24.5em) {
 	/* || NAVIGATION */
 
 	#brand-text-long {
@@ -190,13 +208,6 @@ footer {
 		padding: 0.5rem 0.5rem;
 	}
 
-}
-
-@media (max-width: 28em) {
-  /* || HOME */
-.image-slide {
-	width: 100%;
-}
 }
 
 @media (min-width: 43.125em) {
@@ -225,4 +236,31 @@ footer {
 	.company-info {
 		justify-content: space-evenly;
 	}
+}
+
+@media (max-width: 50em) {
+  /* || HOME */
+.image-slide {
+	width: 100%;
+}
+}
+
+@media (min-width: 60em) {
+  /* || HOME */
+.home{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.home div:first-of-type{
+flex:1;
+}
+}
+
+@media (min-width: 65em) {
+.navbar-collapse * {
+	padding-right: 0.5rem;
+}
 }

@@ -12,11 +12,11 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light navigation pb-1">
       <div class="container-fluid">
-        <div class="logo">
-          <%=link_to root_path, class: "link" do %>
+        <div class="logo ">
+          <%=link_to root_path, class: "link " do %>
             <%=image_tag("Fox.png", class: "menu-icon", alt: "Logo")%>
-            <span class="navbar-brand" id="brand-text-long">Teacher's notes</span>
-            <span class="navbar-brand" id="brand-text-short">TN</span>
+            <span class="navbar-brand orange" id="brand-text-long">Teacher's notes</span>
+            <span class="navbar-brand orange" id="brand-text-short">TN</span>
           <%end%>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,12 +48,12 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <li><%=link_to "All activities", :all_activities, class: "dropdown-item "%></a></li>
-                  <li><%=link_to "My activities", user_activities_path(logged_in_user), class: "dropdown-item "%></li>
+                  <li><%=link_to "My activities", user_activities_path(logged_in_user), class: "dropdown-item"%></li>
                   <li><%=link_to "New", new_user_activity_path(logged_in_user), class: "dropdown-item"%></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <%=link_to "Log out", logout_path, method: :delete , class: "nav-link px-1"%>
+                <%=link_to "Log out", logout_path, method: :delete , class: "nav-link px-5"%>
               </li>
             <%end%>
           </ul>
@@ -69,7 +69,7 @@
         </div>
       <%end%>
       <%if @current_user%>
-        <p class="fs-125 p-1 m-2 mx-sm-5 " id="logged-in">You are: <span><%=@current_user.name%></span></p>
+        <p class="fs-125 p-1 m-2 mx-sm-5 mb-sm-5 " id="logged-in">You are: <span><%=@current_user.name%></span></p>
       <%end%>
       <%= yield %>
     </main>

@@ -1,34 +1,39 @@
-<div class="image-slide">
-  <div id="carouselExampleDark" class="carousel carousel-dark slide pt-1 px-1 pb-5 " data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="4000">
-        <%=image_tag("edu.png", class: "d-block w-100", alt: "Student learning in front of the computer")%>
-        <div class="carousel-caption d-md-block">
-          <p class="bold d-none carousel-caption  d-md-block fs-4 mb-sm-5 bg-light ">Join our community of educators and share your ideas!</p>
-          <%=link_to "Join now", :sign_up, class: "btn btn-warning "%>
+<div class="home">
+  <div class="container home-text  mt-2 text-center mx-2 mb-4 mx-md-3  width-fc p-2 p-xlg-5">
+    <p class="fs-3 p-2 pb-lg-3">Explore our <span class="bold orange">Zoom-friendly online </span>teaching activities!</p>
+    <p class="fs-4">Great for warming up the class or having a fun break between learning!</p>
+    <%=link_to "Activities", :all_activities, class: "btn btn-success btn-lg m-3"%>
+  </div>
+  <div class="image-slide mt-2 ">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide pt-1 px-1 pb-5 " data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner p-lg-5 ">
+        <div class="carousel-item " data-bs-interval="4000">
+          <%=image_tag("edu.png", class: "d-block w-100", alt: "Student learning in front of the computer")%>
+          <div class="carousel-caption d-md-block">
+            <p class="bold d-none car-cap  p-2 d-md-block fs-4 mb-sm-5 bg-light ">Join our community of educators and share your ideas!</p>
+            <%=link_to "JOIN NOW", :sign_up, class: "btn btn-primary btn-lg mb-3"%>
+          </div>
+        </div>
+        <div class="carousel-item active" data-bs-interval="4000">
+          <%=image_tag("school2.jpg", class: "d-block w-100", alt: "Girl having an online lesson")%>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <%=image_tag("pencil-bg.jpg", class: "d-block w-100", alt: "Brown background with text: 'Browse our catalogue of short activities to bring your online lessons to the next level'")%>
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="4000">
-        <%=image_tag("school2.jpg", class: "d-block w-100", alt: "Girl having an online lesson")%>
-        <div class="carousel-caption d-md-block">
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="5000">
-        <%=image_tag("pencil-bg.jpg", class: "d-block w-100", alt: "Brown background with text: 'Browse our catalogue of short activities to bring your online lessons to the next level'")%>
-      </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
     </div>
-   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
   </div>
 </div>
