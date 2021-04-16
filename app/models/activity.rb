@@ -5,8 +5,7 @@ class Activity < ApplicationRecord
 	private
 
 	def self.increase_heart_count(activity)
-		#first "like":
-		!activity.heart_count ? 1 : activity.heart_count + 1
+		activity.heart_count = activity.heart_count + 1
 	end
 
 	def self.get_all_activities(popular, all)
@@ -21,16 +20,16 @@ class Activity < ApplicationRecord
 	end
 
 	def self.get_activities_list_by_activity_category(categories)
-    activities = [] #store filtered results
-			categories.each do |c|
-				activity = Activity.all.where('category like ?', "%#{c}%")
-				if activity != []
-					#"if activity" doesn't work because "where" returns empty record []
-					activities << activity
-				end
-				activities.flatten! #from[1,2,[3,4]] to [1,2,3,4]
-				activities = activities.uniq #delete duplicates
+		activities = [] #store filtered results
+		categories.each do |c|
+			activity = Activity.all.where('category like ?', "%#{c}%")
+			if activity != []
+				#"if activity" doesn't work because "where" returns empty record []
+				activities << activity
 			end
-      return activities
-   end
+			activities.flatten! #from[1,2,[3,4]] to [1,2,3,4]
+			activities = activities.uniq #delete duplicates
+		end
+		return activities
+	end
 end

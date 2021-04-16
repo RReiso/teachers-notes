@@ -26,6 +26,7 @@ class ActivitiesController < ApplicationController
 				title: params[:activity][:title],
 				description: params[:activity][:description],
 				category: string_of_categories,
+        heart_count: 0,
 			)
 			flash[:success] = 'Activity created!'
 			redirect_to user_activities_path(@user)
