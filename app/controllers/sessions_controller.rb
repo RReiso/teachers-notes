@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
 
   def new; end #login path
 
-  def create #creating a sessin for logged in user
+  def create #creating a session for logged in user
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password]) #if user exists and password is correct
       log_in(user) #in sessions_helper.rb (see applicaton_controller as well)
       redirect_to :all_activities
     else
@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy #deleting session
     if logged_in_user
-      #if logged in:
       log_out #in sessions_helper.rb
     end
     redirect_to root_path
