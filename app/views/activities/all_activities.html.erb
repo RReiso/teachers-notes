@@ -6,11 +6,11 @@
     <div class="categories-div container bg-light my-3 my-sm-5 card">
       <div class="d-flex flex-column align-items-start flex-sm-row justify-content-sm-center  px-2 py-1  mx-1 my-2  flex-wrap fs-5">
         <div class="form-check  mx-2">
-          <%= check_box_tag 'all', 'yes', false, class: "form-check-input"%>
+          <%= check_box_tag 'all', 'all', false, class: "form-check-input"%>
           <%= label_tag :all, "All", class: "form-check-label"%>
         </div>
         <div class="form-check mx-2">
-          <%= check_box_tag 'popular', 'yes', false, class: "form-check-input"%>
+          <%= check_box_tag 'popular', 'popular', false, class: "form-check-input"%>
           <%= label_tag :popular, "Popular", class: "form-check-label"%>
         </div>
         <div class="form-check mx-2">
@@ -44,6 +44,18 @@
 </section>
 <section id="gallery">
   <div class="container ">
+    <p class="selected-categories m-1 pb-2 fs-4">
+      <%if @selected_categories%>
+        Showing: 
+        <%@selected_categories.each do |c|%>
+          <%if !c.nil?%>
+            <span class="category lead">
+              <%=c%>
+            </span>
+          <%end%>
+        <%end%>
+      <%end%>  
+    </p>
     <div class="row">
       <%@activities.each  do |activity|%>
         <div class="col-lg-6 mb-4">
@@ -78,7 +90,11 @@
                 <%else%>
                   <i class=" heart_icon fas fa-heart fa-2x heart-logged-in"  data-activity-id=<%=activity.id%>></i>
                 <%end%>
-                <span id="heart-count-<%=activity.id%>"><%=activity.heart_count%></span>
+                <span id="heart-count-<%=activity.id%>">
+                  <%if activity.heart_count != 0%>
+                    <%=activity.heart_count%>
+                  <%end%>  
+                </span>
                 <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
                 <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
               </div>

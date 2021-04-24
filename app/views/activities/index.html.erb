@@ -41,9 +41,13 @@
                 <%if !logged_in_user%>
                   <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log in to like"><i class=" heart_icon fas fa-heart fa-2x"  ></i></span>
                 <%else%>
-                  <i class=" heart_icon fas fa-heart fa-2x"  data-activity-id=<%=activity.id%>></i>
+                  <i class=" heart_icon fas fa-heart fa-2x heart-logged-in"  data-activity-id=<%=activity.id%>></i>
                 <%end%>
-                <span id="heart-count-<%=activity.id%>"><%=activity.heart_count%></span>
+                <span id="heart-count-<%=activity.id%>">
+                  <%if activity.heart_count != 0%>
+                    <%=activity.heart_count%>
+                  <%end%>  
+                </span>
                 <a data-pin-do="buttonBookmark" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/"></a>
                 <button class="print-button " onclick="window.print();return false;"><span class="print-icon"></button> 
               </div>

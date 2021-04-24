@@ -58,6 +58,14 @@ class ActivitiesController < ApplicationController
 	end
 
 	def all_activities
+
+    
+    if !params[:activity].blank?
+           @selected_categories = [params[:all], params[:popular], params[:activity][:category]].flatten!
+    elsif !params[:all].blank? || !params[:popular].blank? 
+             @selected_categories = [params[:all], params[:popular]]
+    end
+    
     @activities = Activity.get_all_activities(params[:popular], params[:all])
 		#if user checks "popular" or "all", method in activity.rb:
 		if @activities 

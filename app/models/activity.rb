@@ -9,11 +9,11 @@ class Activity < ApplicationRecord
 	end
 
 	def self.get_all_activities(popular, all)
-		if popular == 'yes'
+		if popular == 'popular'
 			#if user checks "popular"
 			#organize all activities into descending order according to heart_count:
 			Activity.order(heart_count: :desc)
-		elsif all == 'yes'
+		elsif all == 'all'
 			#if user checks "all"
 			Activity.all
 		end
