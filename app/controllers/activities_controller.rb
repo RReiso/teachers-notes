@@ -65,7 +65,7 @@ class ActivitiesController < ApplicationController
     elsif !params[:all].blank? || !params[:popular].blank? 
              @selected_categories = [params[:all], params[:popular]]
     end
-    
+  
     @activities = Activity.get_all_activities(params[:popular], params[:all])
 		#if user checks "popular" or "all", method in activity.rb:
 		if @activities 
@@ -85,11 +85,21 @@ class ActivitiesController < ApplicationController
 	def update_heart_count #does not work if private
 		activity = Activity.find(params[:id])
 
-		new_heart_count = Activity.increase_heart_count(activity) #in activity.rb
+    #creating a string of user id's who have liked the activity
+    if activity.users.nil?
+      users_like = logged_in_user.id.to_s
+    else
+      users_like = "#{activity.users}, #{logged_in_user.id.to_s}"
+    end  
 
-		activity.update(heart_count: new_heart_count)
-		hash = { heart_count: activity.heart_count }
-		render json: hash
+    #checking if the logged_in user has not yet liked the activity
+    if activity.users.nil? || !activity.users.split(",").map(&:strip).include?(logged_in_user.id.to_s)
+      activity.update(users: users_like)
+      new_heart_count = Activity.increase_heart_count(activity) #in activity.rb
+      activity.update(heart_count: new_heart_count)
+      hash = { heart_count: activity.heart_count }
+      render json: hash
+    end  
 	end
 
 	private
