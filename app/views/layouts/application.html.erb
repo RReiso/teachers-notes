@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RReisoFinal</title>
+    <title>Teacher's Notes</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,56 +10,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light navigation pb-1">
-      <div class="container-fluid">
-        <div class="logo ">
-          <%=link_to root_path, class: "link " do %>
-            <%=image_tag("Fox.png", class: "menu-icon", alt: "Logo")%>
-            <span class="navbar-brand orange" id="brand-text-long">Teacher's notes</span>
-            <span class="navbar-brand orange" id="brand-text-short">TN</span>
-          <%end%>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <%= form_tag(:search_path, method: "get", class: "d-flex") do %>
-            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control me-2", "aria-label": "Search" %> 
-            <%= button_tag "Search", class: 'btn btn-outline-primary ', name: nil%>
-          <% end %>
-          <ul class="navbar-nav fs-125 mb-2 mb-lg-0 ">
-            <li class="nav-item">
-              <%=link_to "Home", root_path, class: "nav-link px-1",  "aria-current" => "page"%>
-            </li>
-            <%if !logged_in_user%>
-              <li class="nav-item">
-                <%=link_to "Activities", :all_activities, class: "nav-link px-1"%>
-              </li>
-              <li class="nav-item">
-                <%=link_to "Log in", login_path, class: "nav-link px-1"%>
-              </li>
-              <li class="nav-item">
-                <%=link_to "Sign up", :sign_up, class: "btn btn-danger"%>
-              </li>
-            <%else%>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle " id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Activities
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><%=link_to "All activities", :all_activities, class: "dropdown-item "%></a></li>
-                  <li><%=link_to "My activities", user_activities_path(logged_in_user), class: "dropdown-item"%></li>
-                  <li><%=link_to "New", new_user_activity_path(logged_in_user), class: "dropdown-item"%></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <%=link_to "Log out", logout_path, method: :delete , class: "nav-link"%>
-              </li>
-            <%end%>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <%= render 'shared/navbar' %>
     </main>
       <%# flash messages, class changes according to the type (:success, :warning)%>
       <%flash.each do |type, msg|%>
@@ -73,50 +24,7 @@
       <%end%>
       <%= yield %>
     </main>
-    <footer>
-			<div class="company-info bg-light">
-				<div>
-					<ul class=" tp footer-list nobullets">
-						<li>&copy; Teacher's Notes</li>
-						<li>All Rights Reserved</li>
-						<li>2021</li>
-					</ul>
-				</div>
-				<div>
-					<h4 class="fs-125 column-title">Our Location</h4>
-					<hr class="divider-line" />
-					<ul class="footer-list nobullets">
-						<li>Suite 291 </li>
-						<li> 47 Bay Street.</li>
-						<li>Toronto, ON K4E 1N8</li>
-						<li>Canada</li>
-					</ul>
-				</div>
-				<div>
-					<h4 class="fs-125 column-title">Quick Links</h4>
-					<hr class="divider-line" />
-					<ul class="footer-list nobullets">
-						<li><a class="link" href="#">Help Center</a></li>
-						<li><a class="link" href="#">Terms & Conditions</a></li>
-						<li><a class="link" href="#">Privacy Policy</a></li>
-					</ul>
-					<div class="link-icons">
-						<a class="link" href="#">
-							<p class="sr-only">link to company's twitter account</p>
-							<i class="social-media fab fa-twitter fa-lg" aria-hidden="true"></i
-						></a>
-						<a class="link" href="#">
-							<p class="sr-only">link to company's facebook account</p>
-							<i class="social-media fab fa-facebook fa-lg" aria-hidden="true"></i
-						></a>
-						<a class="link" href="#">
-							<p class="sr-only">link to company's instagram account</p>
-							<i class="social-media fab fa-instagram fa-lg" aria-hidden="true"></i
-						></a>
-					</div>
-        </div>
-		  </div>
-	  </footer>
+    <%= render 'shared/footer' %>
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   </body>
 </html>
