@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 //my js file:
 require("../script.js");
+
 require("turbolinks").start();
 
 import "@fortawesome/fontawesome-free/js/all";

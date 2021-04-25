@@ -51,9 +51,7 @@ A web application for educators with a focus on creating a collection of 5-10 mi
 ## Future Improvements
 * Fixing discovered bugs:
 	- Bootstrap tooltip for heart icon and Pinterest "save" button in activity card appears only after reloading the page
-	- User can "like" an activity every time the page reloads
 * Work on accessibility features
-* Display selected categories after filtering
 * Create user profile page
 * Add user ability to change password
 * Add user ability to "unlike" activity
