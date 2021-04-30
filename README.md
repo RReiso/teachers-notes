@@ -46,7 +46,7 @@ A web application for educators with a focus on creating a collection of 5-10 mi
 
 ## Built With
 * [Ruby](https://www.ruby-lang.org/en/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming languages
-* [Rails](https://rubyonrails.org/) - Ruby Framework
+* [Ruby on Rails](https://rubyonrails.org/) - Ruby Framework
 * [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - CSS Framework
 ## Future Improvements
 * Fixing discovered bugs:
