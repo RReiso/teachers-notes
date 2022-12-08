@@ -15,7 +15,7 @@
 </p>
 <p align="center">
 <img src="https://i.imgur.com/cPhLQRa.gif" ></p>
-<h3 align="center"><a  href="https://teachersnotes.herokuapp.com/">Live Demo</a></h3>
+<h3 align="center"><a  href="https://teachersnotes.herokuapp.com/"></a></h3>
 
 ## Description
 A web application for educators with a focus on creating a collection of 5-10 min activities for Zoom classes. Short games, warm-ups, ice breakers that can be used at different parts of the lesson according to the teacher’s needs. Users can browse, create, "like" activities and leave comments.
